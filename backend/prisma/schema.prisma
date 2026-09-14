@@ -1,0 +1,193 @@
+datasource db {
+  provider = "postgresql"
+ 
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// ==========================================
+// ENUMS
+// ==========================================
+
+enum Role {
+  STUDENT
+  SUPERVISOR
+  INDEPENDENT
+  ADMIN
+}
+
+enum ProjectStatus {
+  OPEN
+  IN_PROGRESS
+  COMPLETED
+  ARCHIVED
+}
+
+enum ApplicationStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+}
+
+enum TaskStatus {
+  TODO
+  IN_PROGRESS
+  IN_REVIEW
+  DONE
+}
+
+// ==========================================
+// MODELS
+// ==========================================
+
+model User {
+  id               String            @id @default(uuid())
+  email            String            @unique
+  password         String
+  fullName         String
+  role             Role              @default(STUDENT)
+  isVerified       Boolean           @default(false)
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+
+  // Relationships
+  profile          Profile?
+  projectsOwned    ResearchProject[] @relation("ProjectOwner")
+  applications     Application[]
+  assignedTasks    Task[]            @relation("TaskAssignee")
+  coursesAuthored  Course[]          @relation("CourseAuthor")
+  enrollments      Enrollment[]
+  payments         Payment[]
+
+  @@index([email])
+}
+
+model Profile {
+  id            String          @id @default(uuid())
+  userId        String          @unique
+  user          User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  university    String?
+  department    String?
+  bio           String?         @db.Text
+  orcid         String?
+  googleScholar String?
+  github        String?
+  linkedin      String?
+  resumeUrl     String?
+
+  interests     ResearchTopic[] @relation("ProfileInterests")
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+}
+
+model ResearchTopic {
+  id       String            @id @default(uuid())
+  name     String            @unique
+  profiles Profile[]         @relation("ProfileInterests")
+  projects ResearchProject[] @relation("ProjectTopics")
+
+  @@index([name])
+}
+
+model ResearchProject {
+  id           String            @id @default(uuid())
+  title        String
+  description  String            @db.Text
+  requirements String            @db.Text
+  duration     String
+  status       ProjectStatus     @default(OPEN)
+
+  ownerId      String
+  owner        User              @relation("ProjectOwner", fields: [ownerId], references: [id], onDelete: Cascade)
+
+  topics       ResearchTopic[]   @relation("ProjectTopics")
+  applications Application[]
+  workspace    Workspace?
+
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+}
+
+model Application {
+  id          String            @id @default(uuid())
+  projectId   String
+  project     ResearchProject   @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  applicantId String
+  applicant   User              @relation(fields: [applicantId], references: [id], onDelete: Cascade)
+  pitch       String            @db.Text
+  status      ApplicationStatus @default(PENDING)
+  
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+
+  @@unique([projectId, applicantId])
+}
+
+model Workspace {
+  id          String          @id @default(uuid())
+  projectId   String          @unique
+  project     ResearchProject @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  
+  tasks       Task[]
+  createdAt   DateTime        @default(now())
+}
+
+model Task {
+  id          String     @id @default(uuid())
+  workspaceId String
+  workspace   Workspace  @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  
+  title       String
+  description String?    @db.Text
+  status      TaskStatus @default(TODO)
+  dueDate     DateTime?
+
+  assigneeId  String?
+  assignee    User?      @relation("TaskAssignee", fields: [assigneeId], references: [id], onDelete: SetNull)
+
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model Course {
+  id          String       @id @default(uuid())
+  title       String
+  description String       @db.Text
+  price       Float        @default(0.0) // 0 for free demo courses
+  isPublished Boolean      @default(false)
+
+  authorId    String
+  author      User         @relation("CourseAuthor", fields: [authorId], references: [id], onDelete: Cascade)
+
+  enrollments Enrollment[]
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
+
+model Enrollment {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  courseId  String
+  course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@unique([userId, courseId])
+}
+
+model Payment {
+  id            String   @id @default(uuid())
+  userId        String
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  amount        Float
+  currency      String   @default("USD")
+  provider      String   // e.g., STRIPE, BKASH, SSLCOMMERZ
+  status        String   // COMPLETED, PENDING, FAILED
+  transactionId String   @unique
+
+  createdAt     DateTime @default(now())
+}
