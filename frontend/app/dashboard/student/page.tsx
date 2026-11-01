@@ -30,10 +30,20 @@ import {
   BookMarked,
   Award,
   Building2,
-  Paperclip
+  Paperclip,
+  Check,
+  Search,
+  Sparkles,
+  Filter,
+  ArrowRight,
+  PlayCircle,
+  FileCheck,
+  MessageSquare,
+  ChevronRight,
+  AlertCircle
 } from 'lucide-react';
 
-// Custom inline brand icons for React 19 compatibility
+// Custom inline brand icons
 const Github = (props: React.SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
     <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
@@ -70,6 +80,22 @@ interface ProfileData {
   resumeUrl: string;
 }
 
+interface TaskItem {
+  id: string;
+  title: string;
+  assignee: string;
+  status: 'todo' | 'in_progress' | 'review' | 'done';
+  dueDate: string;
+}
+
+interface ApplicationItem {
+  id: string;
+  projectTitle: string;
+  supervisor: string;
+  submittedDate: string;
+  status: 'PENDING' | 'ACCEPTED' | 'REJECTED';
+}
+
 const INTEREST_DOMAINS = [
   'AI', 'Cyber Security', 'Agriculture', 'Blockchain', 
   'IoT', 'Robotics', 'Bioinformatics', 'Climate Change', 'Public Health'
@@ -104,7 +130,6 @@ export default function StudentDashboard() {
     resumeUrl: 'alex_vance_cv_2026.pdf',
   });
 
-  // Edit Buffer State
   const [tempProfile, setTempProfile] = useState<ProfileData>(profile);
 
   // Tag Input Fields
@@ -112,6 +137,38 @@ export default function StudentDashboard() {
   const [newLangInput, setNewLangInput] = useState('');
   const [newInterestInput, setNewInterestInput] = useState('');
   const [newPubInput, setNewPubInput] = useState('');
+
+  // ================= WORKSPACE STATE =================
+  const [tasks, setTasks] = useState<TaskItem[]>([
+    { id: '1', title: 'Prepare Benchmark Dataset for Gene Sequencing', assignee: 'Alex Vance', status: 'done', dueDate: 'Feb 20' },
+    { id: '2', title: 'Train Transformer Model baseline on PyTorch', assignee: 'Alex Vance', status: 'in_progress', dueDate: 'Mar 15' },
+    { id: '3', title: 'Draft Literature Review Section', assignee: 'Liam Chen', status: 'review', dueDate: 'Mar 22' },
+    { id: '4', title: 'Format References into IEEE Style', assignee: 'Alex Vance', status: 'todo', dueDate: 'Apr 02' },
+  ]);
+  const [newTaskTitle, setNewTaskTitle] = useState('');
+
+  // ================= MATCHING STATE =================
+  const [selectedDomain, setSelectedDomain] = useState<string>('Bioinformatics');
+  const [supervisors] = useState([
+    { id: 's1', name: 'Dr. Md. Samsuzzaman', domain: 'Bioinformatics', topic: 'AI-Driven Genomic Sequence Modeling', accepting: 2, matchScore: 96 },
+    { id: 's2', name: 'Prof. Marcus Chen', domain: 'AI', topic: 'Self-Supervised Vision Transformers in Medicine', accepting: 1, matchScore: 91 },
+    { id: 's3', name: 'Dr. Sarah Connor', domain: 'Climate Change', topic: 'Satellite Data Analysis for Deforestation', accepting: 3, matchScore: 84 },
+  ]);
+
+  // ================= APPLICATIONS STATE =================
+  const [applications, setApplications] = useState<ApplicationItem[]>([
+    { id: 'app_1', projectTitle: 'AI-Driven Genomic Sequence Modeling', supervisor: 'Dr. Md. Samsuzzaman', submittedDate: '2026-02-10', status: 'ACCEPTED' },
+    { id: 'app_2', projectTitle: 'Quantum Latency Optimization in Cloud', supervisor: 'Dr. Evelyn Vance', submittedDate: '2026-02-28', status: 'PENDING' },
+  ]);
+  const [applyModalOpen, setApplyModalOpen] = useState(false);
+  const [targetProjectTitle, setTargetProjectTitle] = useState('');
+  const [pitchMessage, setPitchMessage] = useState('');
+
+  // ================= COURSES STATE =================
+  const [enrolledCourses] = useState([
+    { id: 'c1', title: 'Publishing SCI/IEEE Research Papers in 6 Months', instructor: 'Prof. Marcus Chen', progress: 65, totalModules: 12 },
+    { id: 'c2', title: 'Mastering Literature Review & Citation Standards', instructor: 'Dr. Sarah Connor', progress: 100, totalModules: 8 },
+  ]);
 
   // ================= HANDLERS FOR PROFILE EDITING =================
   const handleStartEditing = () => {
@@ -145,7 +202,6 @@ export default function StudentDashboard() {
     setTempProfile((prev) => ({ ...prev, profileImage: null }));
   };
 
-  // Add & Remove Item Helpers
   const addTagItem = (field: 'skills' | 'languages' | 'interests', value: string, setter: (val: string) => void) => {
     if (!value.trim()) return;
     if (!tempProfile[field].includes(value.trim())) {
@@ -177,8 +233,37 @@ export default function StudentDashboard() {
     });
   };
 
+  // Add Task Handler
+  const handleAddTask = () => {
+    if (!newTaskTitle.trim()) return;
+    setTasks([
+      ...tasks,
+      { id: Date.now().toString(), title: newTaskTitle.trim(), assignee: profile.fullName, status: 'todo', dueDate: 'Next Week' }
+    ]);
+    setNewTaskTitle('');
+  };
+
+  // Submit Application Handler
+  const handleSendApplication = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!targetProjectTitle.trim()) return;
+    setApplications([
+      ...applications,
+      {
+        id: Date.now().toString(),
+        projectTitle: targetProjectTitle,
+        supervisor: 'Assigned Supervisor',
+        submittedDate: new Date().toISOString().split('T')[0],
+        status: 'PENDING'
+      }
+    ]);
+    setApplyModalOpen(false);
+    setPitchMessage('');
+    alert('Research Proposal / Pitch submitted successfully!');
+  };
+
   return (
-    <div className="min-h-screen bg-[#031114] text-[#e2f1f4] bg-grid-pattern flex flex-col font-sans">
+    <div className="min-h-screen bg-[#031114] text-[#e2f1f4] bg-grid-pattern flex flex-col font-sans selection:bg-[#00e5ff] selection:text-[#031114]">
       
       {/* Hidden File Input for Picture Upload */}
       <input 
@@ -201,9 +286,9 @@ export default function StudentDashboard() {
           
           <Link href="/" className="flex items-center gap-2">
             <div className="relative w-8 h-8 rounded overflow-hidden flex items-center justify-center">
-              <Image src="/logo.png" alt="ResearchNest" width={32} height={32} className="object-contain" priority />
+              <Image src="/logo.png" alt="ResearchNest" width={32} height={32} style={{ width: '32px', height: '32px' }} priority />
             </div>
-            <span className="text-white font-bold tracking-tight text-lg hidden sm:inline">ResearchNest</span>
+            <span className="text-white font-bold tracking-tight text-lg hidden sm:inline font-sans">ResearchNest</span>
           </Link>
 
           <span className="ml-3 px-2.5 py-0.5 rounded-full border border-[#00e5ff]/40 bg-[#00e5ff]/10 text-[#00e5ff] text-[10px] font-mono tracking-widest uppercase">
@@ -234,7 +319,7 @@ export default function StudentDashboard() {
         <aside className={`
           fixed md:static inset-y-0 left-0 z-30 w-64 bg-[#020d0f] border-r border-[#0b282e] transition-transform duration-300 transform 
           ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
-          pt-20 md:pt-0 flex flex-col justify-between
+          pt-20 md:pt-0 flex flex-col justify-between shrink-0
         `}>
           <div className="p-4 space-y-1">
             <div className="px-3 py-2 text-[10px] font-mono uppercase tracking-widest text-[#54757d]">Navigation</div>
@@ -243,7 +328,7 @@ export default function StudentDashboard() {
               onClick={() => { setActiveTab('workspace'); setMobileMenuOpen(false); }}
               className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-medium transition ${
                 activeTab === 'workspace' 
-                  ? 'bg-[#00e5ff]/10 text-[#00e5ff] border border-[#00e5ff]/30' 
+                  ? 'bg-[#00e5ff]/10 text-[#00e5ff] border border-[#00e5ff]/30 shadow-[0_0_15px_rgba(0,229,255,0.1)]' 
                   : 'text-[#7f9ca4] hover:text-white hover:bg-[#04181c]'
               }`}
             >
@@ -254,7 +339,7 @@ export default function StudentDashboard() {
               onClick={() => { setActiveTab('matching'); setMobileMenuOpen(false); }}
               className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-medium transition ${
                 activeTab === 'matching' 
-                  ? 'bg-[#00e5ff]/10 text-[#00e5ff] border border-[#00e5ff]/30' 
+                  ? 'bg-[#00e5ff]/10 text-[#00e5ff] border border-[#00e5ff]/30 shadow-[0_0_15px_rgba(0,229,255,0.1)]' 
                   : 'text-[#7f9ca4] hover:text-white hover:bg-[#04181c]'
               }`}
             >
@@ -265,7 +350,7 @@ export default function StudentDashboard() {
               onClick={() => { setActiveTab('projects'); setMobileMenuOpen(false); }}
               className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-medium transition ${
                 activeTab === 'projects' 
-                  ? 'bg-[#00e5ff]/10 text-[#00e5ff] border border-[#00e5ff]/30' 
+                  ? 'bg-[#00e5ff]/10 text-[#00e5ff] border border-[#00e5ff]/30 shadow-[0_0_15px_rgba(0,229,255,0.1)]' 
                   : 'text-[#7f9ca4] hover:text-white hover:bg-[#04181c]'
               }`}
             >
@@ -276,7 +361,7 @@ export default function StudentDashboard() {
               onClick={() => { setActiveTab('courses'); setMobileMenuOpen(false); }}
               className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-medium transition ${
                 activeTab === 'courses' 
-                  ? 'bg-[#00e5ff]/10 text-[#00e5ff] border border-[#00e5ff]/30' 
+                  ? 'bg-[#00e5ff]/10 text-[#00e5ff] border border-[#00e5ff]/30 shadow-[0_0_15px_rgba(0,229,255,0.1)]' 
                   : 'text-[#7f9ca4] hover:text-white hover:bg-[#04181c]'
               }`}
             >
@@ -287,7 +372,7 @@ export default function StudentDashboard() {
               onClick={() => { setActiveTab('profile'); setMobileMenuOpen(false); }}
               className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-medium transition ${
                 activeTab === 'profile' 
-                  ? 'bg-[#00e5ff]/10 text-[#00e5ff] border border-[#00e5ff]/30' 
+                  ? 'bg-[#00e5ff]/10 text-[#00e5ff] border border-[#00e5ff]/30 shadow-[0_0_15px_rgba(0,229,255,0.1)]' 
                   : 'text-[#7f9ca4] hover:text-white hover:bg-[#04181c]'
               }`}
             >
@@ -303,7 +388,253 @@ export default function StudentDashboard() {
         {/* ================= MAIN CONTENT AREA ================= */}
         <main className="flex-1 p-4 sm:p-8 overflow-y-auto max-w-7xl">
           
-          {/* ================= STUDENT PROFILE SECTION ================= */}
+          {/* ================= VIEW 1: RESEARCH WORKSPACE ================= */}
+          {activeTab === 'workspace' && (
+            <div className="space-y-6">
+              
+              {/* Active Project Card & Research Stages */}
+              <div className="bg-[#04181c] border border-[#0d343c] p-6 rounded-2xl space-y-5">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#0d343c] pb-4">
+                  <div>
+                    <span className="text-[10px] font-mono text-[#00e5ff] uppercase tracking-wider">Active Workspace</span>
+                    <h2 className="text-xl font-bold text-white font-serif mt-0.5">
+                      Transformer Architectures in Genomic Sequencing
+                    </h2>
+                    <p className="text-xs text-[#7f9ca4] mt-1">Supervisor: Dr. Md. Samsuzzaman • Team: 3 Scholars</p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="px-3 py-1 rounded-full bg-emerald-950/50 border border-emerald-800 text-emerald-400 text-xs font-mono">
+                      Phase: Model Training (Stage 5 / 9)
+                    </span>
+                  </div>
+                </div>
+
+                {/* Milestone Progress Flow */}
+                <div>
+                  <h4 className="text-xs font-mono text-[#7f9ca4] uppercase mb-3">Research Lifecycle Milestones</h4>
+                  <div className="grid grid-cols-3 sm:grid-cols-9 gap-1 text-[10px] font-mono text-center">
+                    {[
+                      { step: 'Idea', done: true },
+                      { step: 'Lit Review', done: true },
+                      { step: 'Proposal', done: true },
+                      { step: 'Data Prep', done: true },
+                      { step: 'Analysis', active: true },
+                      { step: 'Drafting', done: false },
+                      { step: 'Review', done: false },
+                      { step: 'Submission', done: false },
+                      { step: 'Published', done: false },
+                    ].map((m, idx) => (
+                      <div 
+                        key={idx} 
+                        className={`p-2 rounded border ${
+                          m.active 
+                            ? 'bg-[#00e5ff]/20 border-[#00e5ff] text-white font-bold animate-pulse' 
+                            : m.done 
+                              ? 'bg-emerald-950/40 border-emerald-800 text-emerald-400' 
+                              : 'bg-[#020d0f] border-[#0d343c] text-[#54757d]'
+                        }`}
+                      >
+                        {m.step}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Kanban Task Management Board */}
+              <div className="bg-[#04181c] border border-[#0d343c] p-6 rounded-2xl space-y-4">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                  <h3 className="text-base font-bold text-white flex items-center gap-2">
+                    <GitBranch className="w-5 h-5 text-[#00e5ff]" /> Project Kanban Task Board
+                  </h3>
+                  
+                  {/* Quick Add Task */}
+                  <div className="flex gap-2 w-full sm:w-auto">
+                    <input 
+                      type="text" 
+                      placeholder="Enter task title..." 
+                      value={newTaskTitle}
+                      onChange={(e) => setNewTaskTitle(e.target.value)}
+                      onKeyDown={(e) => e.key === 'Enter' && handleAddTask()}
+                      className="bg-[#020d0f] border border-[#0d343c] focus:border-[#00e5ff] px-3 py-1.5 text-xs text-white rounded-lg outline-none flex-1 sm:w-64"
+                    />
+                    <button 
+                      onClick={handleAddTask}
+                      className="px-3 py-1.5 bg-[#00e5ff] text-[#031114] font-bold text-xs rounded-lg hover:bg-[#33ebff] transition flex items-center gap-1"
+                    >
+                      <Plus className="w-4 h-4" /> Add Task
+                    </button>
+                  </div>
+                </div>
+
+                {/* Kanban Columns */}
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4 pt-2">
+                  {[
+                    { key: 'todo', label: 'To Do', border: 'border-amber-500/40' },
+                    { key: 'in_progress', label: 'In Progress', border: 'border-cyan-500/40' },
+                    { key: 'review', label: 'Under Review', border: 'border-indigo-500/40' },
+                    { key: 'done', label: 'Completed', border: 'border-emerald-500/40' },
+                  ].map((col) => (
+                    <div key={col.key} className={`bg-[#020d0f] border-t-2 ${col.border} border-x border-b border-[#0d343c] p-3 rounded-xl space-y-3 min-h[220px]`}>
+                      <span className="text-xs font-mono uppercase text-[#7f9ca4] font-bold block pb-1 border-b border-[#0d343c]/60">
+                        {col.label} ({tasks.filter(t => t.status === col.key).length})
+                      </span>
+                      {tasks.filter(t => t.status === col.key).map((t) => (
+                        <div key={t.id} className="p-3 bg-[#04181c] border border-[#0d343c] rounded-lg space-y-2 text-xs">
+                          <p className="font-semibold text-white">{t.title}</p>
+                          <div className="flex items-center justify-between text-[10px] text-[#7f9ca4]">
+                            <span>{t.assignee}</span>
+                            <span className="flex items-center gap-1"><Clock className="w-3 h-3 text-[#00e5ff]" /> {t.dueDate}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+          )}
+
+          {/* ================= VIEW 2: INTEREST MATCHING ================= */}
+          {activeTab === 'matching' && (
+            <div className="space-y-6">
+              <div className="bg-[#04181c] border border-[#0d343c] p-6 rounded-2xl space-y-4">
+                <div className="flex items-center justify-between border-b border-[#0d343c] pb-3">
+                  <div>
+                    <h2 className="text-xl font-bold text-white font-serif flex items-center gap-2">
+                      <Sparkles className="w-5 h-5 text-[#00e5ff]" /> AI Supervisor & Collaborator Matching Engine
+                    </h2>
+                    <p className="text-xs text-[#7f9ca4] mt-0.5">Filter by research interest domain to discover compatible supervisors and student peers.</p>
+                  </div>
+                </div>
+
+                {/* Domain Selector Tags */}
+                <div className="flex flex-wrap gap-2 pt-2">
+                  {INTEREST_DOMAINS.map((domain) => (
+                    <button
+                      key={domain}
+                      onClick={() => setSelectedDomain(domain)}
+                      className={`px-3.5 py-1.5 rounded-full text-xs font-mono transition ${
+                        selectedDomain === domain 
+                          ? 'bg-[#00e5ff] text-[#031114] font-bold shadow-[0_0_12px_rgba(0,229,255,0.3)]' 
+                          : 'bg-[#020d0f] border border-[#0d343c] text-[#7f9ca4] hover:text-white'
+                      }`}
+                    >
+                      {domain}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Matching Results List */}
+              <div className="space-y-4">
+                <h3 className="text-xs font-mono uppercase text-[#7f9ca4] tracking-wider">
+                  Recommended Supervisors for <span className="text-[#00e5ff]">{selectedDomain}</span>
+                </h3>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {supervisors
+                    .filter(s => selectedDomain === 'AI' || s.domain === selectedDomain)
+                    .map((s) => (
+                      <div key={s.id} className="bg-[#04181c] border border-[#0d343c] p-5 rounded-2xl flex flex-col justify-between space-y-4">
+                        <div>
+                          <div className="flex items-center justify-between">
+                            <span className="text-xs text-[#00e5ff] font-mono font-bold">{s.domain}</span>
+                            <span className="px-2.5 py-0.5 rounded bg-emerald-950/60 border border-emerald-800 text-emerald-400 text-[10px] font-mono">
+                              {s.matchScore}% Match
+                            </span>
+                          </div>
+                          <h4 className="text-base font-bold text-white mt-1">{s.name}</h4>
+                          <p className="text-xs text-[#7f9ca4] mt-1">Topic: <span className="text-[#e2f1f4]">{s.topic}</span></p>
+                          <p className="text-[11px] text-[#54757d] mt-2">Open Student Spots: {s.accepting}</p>
+                        </div>
+
+                        <button 
+                          onClick={() => {
+                            setTargetProjectTitle(s.topic);
+                            setApplyModalOpen(true);
+                          }}
+                          className="w-full py-2 bg-[#00e5ff]/10 border border-[#00e5ff]/40 text-[#00e5ff] font-semibold text-xs rounded-lg hover:bg-[#00e5ff] hover:text-[#031114] transition"
+                        >
+                          Apply to Supervisor
+                        </button>
+                      </div>
+                    ))}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* ================= VIEW 3: TEAMS & APPLICATIONS ================= */}
+          {activeTab === 'projects' && (
+            <div className="space-y-6">
+              {/* Submitted Applications List */}
+              <div className="bg-[#04181c] border border-[#0d343c] p-6 rounded-2xl space-y-4">
+                <h3 className="text-lg font-bold text-white font-serif">My Submitted Research Applications</h3>
+                
+                <div className="space-y-3">
+                  {applications.map((app) => (
+                    <div key={app.id} className="p-4 bg-[#020d0f] border border-[#0d343c] rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                      <div>
+                        <h4 className="font-semibold text-white text-sm">{app.projectTitle}</h4>
+                        <p className="text-xs text-[#7f9ca4] mt-0.5">Supervisor: {app.supervisor} • Submitted: {app.submittedDate}</p>
+                      </div>
+                      <span className={`px-3 py-1 rounded-full text-xs font-mono w-fit ${
+                        app.status === 'ACCEPTED' 
+                          ? 'bg-emerald-950/60 text-emerald-400 border border-emerald-800' 
+                          : app.status === 'PENDING'
+                            ? 'bg-amber-950/60 text-amber-400 border border-amber-800'
+                            : 'bg-red-950/60 text-red-400 border border-red-800'
+                      }`}>
+                        {app.status}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* ================= VIEW 4: COURSE MARKETPLACE ================= */}
+          {activeTab === 'courses' && (
+            <div className="space-y-6">
+              <div className="bg-[#04181c] border border-[#0d343c] p-6 rounded-2xl space-y-6">
+                <div className="flex justify-between items-center border-b border-[#0d343c] pb-4">
+                  <div>
+                    <h2 className="text-xl font-bold text-white font-serif">Enrolled Research Paper Courses</h2>
+                    <p className="text-xs text-[#7f9ca4] mt-1">Structured learning path for SCI/IEEE paper drafting and literature review.</p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {enrolledCourses.map((c) => (
+                    <div key={c.id} className="p-5 bg-[#020d0f] border border-[#0d343c] rounded-xl space-y-3">
+                      <h4 className="font-bold text-white text-sm">{c.title}</h4>
+                      <p className="text-xs text-[#7f9ca4]">Instructor: {c.instructor}</p>
+                      
+                      {/* Progress Bar */}
+                      <div className="space-y-1">
+                        <div className="flex justify-between text-[11px] text-[#00e5ff] font-mono">
+                          <span>Progress</span>
+                          <span>{c.progress}%</span>
+                        </div>
+                        <div className="w-full h-2 bg-[#0d343c] rounded-full overflow-hidden">
+                          <div className="h-full bg-[#00e5ff] transition-all duration-300" style={{ width: `${c.progress}%` }} />
+                        </div>
+                      </div>
+
+                      <button className="w-full py-2 bg-[#00e5ff]/10 border border-[#00e5ff]/30 text-[#00e5ff] text-xs font-semibold rounded-lg hover:bg-[#00e5ff] hover:text-[#031114] transition flex items-center justify-center gap-2">
+                        <PlayCircle className="w-4 h-4" /> Continue Learning
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* ================= VIEW 5: STUDENT PROFILE ================= */}
           {activeTab === 'profile' && (
             <div className="space-y-6">
               
@@ -845,6 +1176,53 @@ export default function StudentDashboard() {
 
         </main>
       </div>
+
+      {/* ================= MODAL: APPLY TO SUPERVISOR ================= */}
+      {applyModalOpen && (
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="bg-[#04181c] border border-[#0d343c] w-full max-w-lg rounded-2xl p-6 relative space-y-4">
+            <button 
+              onClick={() => setApplyModalOpen(false)}
+              className="absolute top-4 right-4 text-[#7f9ca4] hover:text-white"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <h3 className="text-lg font-bold text-white font-serif">Apply for Research Project</h3>
+            <p className="text-xs text-[#7f9ca4]">Project Topic: <span className="text-[#00e5ff] font-semibold">{targetProjectTitle}</span></p>
+
+            <form onSubmit={handleSendApplication} className="space-y-4">
+              <div>
+                <label className="block text-xs font-mono text-[#7f9ca4] mb-1">Research Pitch & Cover Statement</label>
+                <textarea 
+                  required 
+                  rows={4}
+                  value={pitchMessage}
+                  onChange={(e) => setPitchMessage(e.target.value)}
+                  placeholder="Explain why your academic background and skills make you a strong fit for this supervisor..."
+                  className="w-full bg-[#020d0f] border border-[#0d343c] focus:border-[#00e5ff] p-3 text-xs rounded-lg text-white outline-none resize-none"
+                />
+              </div>
+
+              <div className="flex justify-end gap-2">
+                <button 
+                  type="button" 
+                  onClick={() => setApplyModalOpen(false)}
+                  className="px-4 py-2 bg-[#020d0f] border border-[#0d343c] text-[#7f9ca4] text-xs font-semibold rounded-lg hover:text-white"
+                >
+                  Cancel
+                </button>
+                <button 
+                  type="submit" 
+                  className="px-4 py-2 bg-[#00e5ff] text-[#031114] text-xs font-bold rounded-lg hover:bg-[#33ebff] transition flex items-center gap-1.5"
+                >
+                  <Send className="w-4 h-4" /> Submit Application
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
 
     </div>
   );
