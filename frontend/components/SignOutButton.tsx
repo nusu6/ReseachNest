@@ -59,13 +59,13 @@ export default function SignOutButton({ collapsed = false, className = '' }: Sig
       {isOpen && (
         <div className="fixed inset-0 z-9999 w-screen h-screen flex items-center justify-center p-4 bg-black/70 backdrop-blur-md animate-in fade-in duration-150">
           <div 
-            className="w-full max-w-sm bg-[#04181c] border border-[#0d343c] rounded-xl p-6 shadow-[0_0_50px_rgba(0,0,0,0.8)] text-[#e2f1f4] relative"
+            className="w-full max-w-sm bg-white border border-[#d5e5e3] rounded-xl p-6 shadow-[0_0_50px_rgba(0,0,0,0.8)] text-[#061d21] relative"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Close Button */}
             <button
               onClick={() => !loading && setIsOpen(false)}
-              className="absolute top-4 right-4 text-[#7f9ca4] hover:text-white transition"
+              className="absolute top-4 right-4 text-[#4a6b72] hover:text-[#061d21] transition"
               disabled={loading}
             >
               <X className="w-4 h-4" />
@@ -77,14 +77,14 @@ export default function SignOutButton({ collapsed = false, className = '' }: Sig
                 <AlertTriangle className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="text-lg font-serif font-semibold text-white tracking-tight">
+                <h3 className="text-lg font-serif font-semibold text-[#061d21] tracking-tight">
                   Sign out
                 </h3>
-                <p className="text-xs text-[#7f9ca4]">Confirm session termination</p>
+                <p className="text-xs text-[#4a6b72]">Confirm session termination</p>
               </div>
             </div>
 
-            <p className="text-sm text-[#7f9ca4] mb-6 leading-relaxed">
+            <p className="text-sm text-[#4a6b72] mb-6 leading-relaxed">
               Are you sure you want to log out of ResearchNest?
             </p>
 
@@ -94,7 +94,7 @@ export default function SignOutButton({ collapsed = false, className = '' }: Sig
                 type="button"
                 onClick={() => setIsOpen(false)}
                 disabled={loading}
-                className="flex-1 py-2.5 px-4 rounded-lg border border-[#0d343c] bg-[#031114] text-sm font-medium text-[#7f9ca4] hover:text-white hover:border-[#164a55] transition disabled:opacity-50"
+                className="flex-1 py-2.5 px-4 rounded-lg border border-[#d5e5e3] bg-[#f4f8f7] text-sm font-medium text-[#4a6b72] hover:text-[#061d21] hover:border-[#164a55] transition disabled:opacity-50"
               >
                 Cancel
               </button>
@@ -103,7 +103,7 @@ export default function SignOutButton({ collapsed = false, className = '' }: Sig
                 type="button"
                 onClick={handleSignOut}
                 disabled={loading}
-                className="flex-1 py-2.5 px-4 rounded-lg bg-red-600 hover:bg-red-500 text-white text-sm font-medium transition flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(239,68,68,0.25)] disabled:opacity-50"
+                className="flex-1 py-2.5 px-4 rounded-lg bg-red-600 hover:bg-red-500 text-[#061d21] text-sm font-medium transition flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(239,68,68,0.25)] disabled:opacity-50"
               >
                 {loading ? (
                   <>

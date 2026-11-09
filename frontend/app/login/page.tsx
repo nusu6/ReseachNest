@@ -77,20 +77,20 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#031114] text-[#e2f1f4] bg-grid-pattern flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8 font-sans relative">
+    <div className="min-h-screen bg-[#f4f8f7] text-[#061d21] bg-grid-pattern flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8 font-sans relative">
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
         <Link href="/" className="inline-flex items-center gap-3 mb-6">
           <div className="relative w-auto h-auto rounded overflow-hidden flex items-center justify-center">
             <Image src="/logo.png" alt="ResearchNest" width={40} height={40} className="object-contain" priority />
           </div>
-          <span className="text-white font-bold tracking-tight text-xl font-sans">ResearchNest</span>
+          <span className="text-[#061d21] font-bold tracking-tight text-xl font-sans">ResearchNest</span>
         </Link>
-        <h2 className="text-3xl sm:text-4xl font-serif text-white tracking-tight">Welcome back</h2>
-        <p className="mt-2 text-sm text-[#7f9ca4]">Sign in to access your research workspace</p>
+        <h2 className="text-3xl sm:text-4xl font-serif text-[#061d21] tracking-tight">Welcome back</h2>
+        <p className="mt-2 text-sm text-[#4a6b72]">Sign in to access your research workspace</p>
       </div>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-[#04181c]/90 border border-[#0d343c] py-8 px-6 sm:px-10 rounded-xl shadow-2xl backdrop-blur-md">
+        <div className="bg-white/90 border border-[#d5e5e3] py-8 px-6 sm:px-10 rounded-xl shadow-2xl backdrop-blur-md">
           {error && (
             <div className="mb-6 p-4 rounded-lg bg-red-950/50 border border-red-800/60 text-red-300 text-sm flex items-center gap-3">
               <AlertCircle className="w-5 h-5 shrink-0 text-red-400" />
@@ -100,18 +100,18 @@ export default function LoginPage() {
 
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label className="block text-xs font-mono uppercase tracking-wider text-[#94aeb5] mb-2">Email Address</label>
-              <input type="email" name="email" required value={formData.email} onChange={handleInputChange} placeholder="name@university.edu" className="w-full px-4 py-3 rounded-lg bg-[#031114] border border-[#0d343c] text-white placeholder-[#395c64] focus:outline-none focus:border-[#00e5ff] transition" />
+              <label className="block text-xs font-mono uppercase tracking-wider text-[#3b5960] mb-2">Email Address</label>
+              <input type="email" name="email" required value={formData.email} onChange={handleInputChange} placeholder="name@university.edu" className="w-full px-4 py-3 rounded-lg bg-[#f4f8f7] border border-[#d5e5e3] text-[#061d21] placeholder-[#395c64] focus:outline-none focus:border-[#00e5ff] transition" />
             </div>
 
             <div>
               <div className="flex items-center justify-between mb-2">
-                <label className="block text-xs font-mono uppercase tracking-wider text-[#94aeb5]">Password</label>
+                <label className="block text-xs font-mono uppercase tracking-wider text-[#3b5960]">Password</label>
                 <Link href="/forgot-password" className="text-xs text-[#00e5ff] hover:underline">Forgot password?</Link>
               </div>
               <div className="relative">
-                <input type={showPassword ? 'text' : 'password'} name="password" required value={formData.password} onChange={handleInputChange} placeholder="••••••••••••" className="w-full px-4 py-3 rounded-lg bg-[#031114] border border-[#0d343c] text-white placeholder-[#395c64] focus:outline-none focus:border-[#00e5ff] transition pr-10" />
-                <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 text-[#7f9ca4] hover:text-white">
+                <input type={showPassword ? 'text' : 'password'} name="password" required value={formData.password} onChange={handleInputChange} placeholder="••••••••••••" className="w-full px-4 py-3 rounded-lg bg-[#f4f8f7] border border-[#d5e5e3] text-[#061d21] placeholder-[#395c64] focus:outline-none focus:border-[#00e5ff] transition pr-10" />
+                <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 text-[#4a6b72] hover:text-[#061d21]">
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
               </div>
@@ -122,7 +122,7 @@ export default function LoginPage() {
             </button>
           </form>
 
-          <p className="mt-6 text-center text-xs text-[#7f9ca4]">Don't have an account? <Link href="/register" className="text-[#00e5ff] hover:underline font-medium">Create an account</Link></p>
+          <p className="mt-6 text-center text-xs text-[#4a6b72]">Don't have an account? <Link href="/register" className="text-[#00e5ff] hover:underline font-medium">Create an account</Link></p>
         </div>
       </div>
     </div>

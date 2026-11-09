@@ -263,7 +263,7 @@ export default function StudentDashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-[#031114] text-[#e2f1f4] bg-grid-pattern flex flex-col font-sans selection:bg-[#00e5ff] selection:text-[#031114]">
+    <div className="min-h-screen bg-[#f4f8f7] text-[#061d21] bg-grid-pattern flex flex-col font-sans selection:bg-[#00e5ff] selection:text-[#031114]">
       
       {/* Hidden File Input for Picture Upload */}
       <input 
@@ -275,11 +275,11 @@ export default function StudentDashboard() {
       />
 
       {/* ================= TOP NAVIGATION BAR ================= */}
-      <header className="border-b border-[#0b282e]/80 bg-[#031114]/90 backdrop-blur-md sticky top-0 z-40 h-16 flex items-center justify-between px-4 sm:px-6">
+      <header className="border-b border-[#e2ecea]/80 bg-[#f4f8f7]/90 backdrop-blur-md sticky top-0 z-40 h-16 flex items-center justify-between px-4 sm:px-6">
         <div className="flex items-center gap-3">
           <button 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded text-[#94aeb5] hover:text-white"
+            className="md:hidden p-2 rounded text-[#3b5960] hover:text-[#061d21]"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -288,7 +288,7 @@ export default function StudentDashboard() {
             <div className="relative w-8 h-8 rounded overflow-hidden flex items-center justify-center">
               <Image src="/logo.png" alt="ResearchNest" width={32} height={32} style={{ width: '32px', height: '32px' }} priority />
             </div>
-            <span className="text-white font-bold tracking-tight text-lg hidden sm:inline font-sans">ResearchNest</span>
+            <span className="text-[#061d21] font-bold tracking-tight text-lg hidden sm:inline font-sans">ResearchNest</span>
           </Link>
 
           <span className="ml-3 px-2.5 py-0.5 rounded-full border border-[#00e5ff]/40 bg-[#00e5ff]/10 text-[#00e5ff] text-[10px] font-mono tracking-widest uppercase">
@@ -299,11 +299,11 @@ export default function StudentDashboard() {
         {/* User Info Header Avatar */}
         <div className="flex items-center gap-4">
           <div className="hidden sm:flex flex-col text-right">
-            <span className="text-sm font-semibold text-white">{profile.fullName}</span>
+            <span className="text-sm font-semibold text-[#000000]">{profile.fullName}</span>
             <span className="text-[11px] text-[#00e5ff] font-mono">{profile.university}</span>
           </div>
           
-          <div className="w-9 h-9 rounded-full bg-[#0d343c] border border-[#00e5ff]/50 flex items-center justify-center text-white font-serif text-sm font-bold shadow-[0_0_10px_rgba(0,229,255,0.2)] overflow-hidden">
+          <div className="w-9 h-9 rounded-full bg-[#004850] border border-[#00e5ff] flex items-center justify-center text-[#000000] font-serif text-sm font-bold shadow-[0_0_10px_rgba(0,229,255,0.2)] overflow-hidden">
             {profile.profileImage ? (
               <img src={profile.profileImage} alt={profile.fullName} className="w-full h-full object-cover" />
             ) : (
@@ -317,7 +317,7 @@ export default function StudentDashboard() {
         
         {/* ================= SIDEBAR NAVIGATION ================= */}
         <aside className={`
-          fixed md:static inset-y-0 left-0 z-30 w-64 bg-[#020d0f] border-r border-[#0b282e] transition-transform duration-300 transform 
+          fixed md:static inset-y-0 left-0 z-30 w-64 bg-[#eff6f5] border-r border-[#e2ecea] transition-transform duration-300 transform 
           ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
           pt-20 md:pt-0 flex flex-col justify-between shrink-0
         `}>
@@ -329,7 +329,7 @@ export default function StudentDashboard() {
               className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-medium transition ${
                 activeTab === 'workspace' 
                   ? 'bg-[#00e5ff]/10 text-[#00e5ff] border border-[#00e5ff]/30 shadow-[0_0_15px_rgba(0,229,255,0.1)]' 
-                  : 'text-[#7f9ca4] hover:text-white hover:bg-[#04181c]'
+                  : 'text-[#4a6b72] hover:text-[#061d21] hover:bg-white'
               }`}
             >
               <Layers className="w-4 h-4" /> Research Workspace
@@ -340,7 +340,7 @@ export default function StudentDashboard() {
               className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-medium transition ${
                 activeTab === 'matching' 
                   ? 'bg-[#00e5ff]/10 text-[#00e5ff] border border-[#00e5ff]/30 shadow-[0_0_15px_rgba(0,229,255,0.1)]' 
-                  : 'text-[#7f9ca4] hover:text-white hover:bg-[#04181c]'
+                  : 'text-[#4a6b72] hover:text-[#061d21] hover:bg-white'
               }`}
             >
               <Compass className="w-4 h-4" /> Interest Matching
@@ -351,7 +351,7 @@ export default function StudentDashboard() {
               className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-medium transition ${
                 activeTab === 'projects' 
                   ? 'bg-[#00e5ff]/10 text-[#00e5ff] border border-[#00e5ff]/30 shadow-[0_0_15px_rgba(0,229,255,0.1)]' 
-                  : 'text-[#7f9ca4] hover:text-white hover:bg-[#04181c]'
+                  : 'text-[#4a6b72] hover:text-[#061d21] hover:bg-white'
               }`}
             >
               <Users className="w-4 h-4" /> Teams & Applications
@@ -362,7 +362,7 @@ export default function StudentDashboard() {
               className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-medium transition ${
                 activeTab === 'courses' 
                   ? 'bg-[#00e5ff]/10 text-[#00e5ff] border border-[#00e5ff]/30 shadow-[0_0_15px_rgba(0,229,255,0.1)]' 
-                  : 'text-[#7f9ca4] hover:text-white hover:bg-[#04181c]'
+                  : 'text-[#4a6b72] hover:text-[#061d21] hover:bg-white'
               }`}
             >
               <BookOpen className="w-4 h-4" /> Course Marketplace
@@ -373,7 +373,7 @@ export default function StudentDashboard() {
               className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-medium transition ${
                 activeTab === 'profile' 
                   ? 'bg-[#00e5ff]/10 text-[#00e5ff] border border-[#00e5ff]/30 shadow-[0_0_15px_rgba(0,229,255,0.1)]' 
-                  : 'text-[#7f9ca4] hover:text-white hover:bg-[#04181c]'
+                  : 'text-[#4a6b72] hover:text-[#061d21] hover:bg-white'
               }`}
             >
               <User className="w-4 h-4" /> Student Profile
@@ -393,17 +393,17 @@ export default function StudentDashboard() {
             <div className="space-y-6">
               
               {/* Active Project Card & Research Stages */}
-              <div className="bg-[#04181c] border border-[#0d343c] p-6 rounded-2xl space-y-5">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#0d343c] pb-4">
+              <div className="bg-white border border-[#d5e5e3] p-6 rounded-2xl space-y-5">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#d5e5e3] pb-4">
                   <div>
                     <span className="text-[10px] font-mono text-[#00e5ff] uppercase tracking-wider">Active Workspace</span>
-                    <h2 className="text-xl font-bold text-white font-serif mt-0.5">
+                    <h2 className="text-xl font-bold text-[#061d21] font-serif mt-0.5">
                       Transformer Architectures in Genomic Sequencing
                     </h2>
-                    <p className="text-xs text-[#7f9ca4] mt-1">Supervisor: Dr. Md. Samsuzzaman • Team: 3 Scholars</p>
+                    <p className="text-xs text-[#4a6b72] mt-1">Supervisor: Dr. Md. Samsuzzaman • Team: 3 Scholars</p>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="px-3 py-1 rounded-full bg-emerald-950/50 border border-emerald-800 text-emerald-400 text-xs font-mono">
+                    <span className="px-3 py-1 rounded-full bg-[#004850] border border-[#00e5ff] text-[#00e5ff] text-xs font-mono">
                       Phase: Model Training (Stage 5 / 9)
                     </span>
                   </div>
@@ -411,7 +411,7 @@ export default function StudentDashboard() {
 
                 {/* Milestone Progress Flow */}
                 <div>
-                  <h4 className="text-xs font-mono text-[#7f9ca4] uppercase mb-3">Research Lifecycle Milestones</h4>
+                  <h4 className="text-xs font-mono text-[#4a6b72] uppercase mb-3">Research Lifecycle Milestones</h4>
                   <div className="grid grid-cols-3 sm:grid-cols-9 gap-1 text-[10px] font-mono text-center">
                     {[
                       { step: 'Idea', done: true },
@@ -428,10 +428,10 @@ export default function StudentDashboard() {
                         key={idx} 
                         className={`p-2 rounded border ${
                           m.active 
-                            ? 'bg-[#00e5ff]/20 border-[#00e5ff] text-white font-bold animate-pulse' 
+                            ? 'bg-[#00e5ff]/40 border-[#00e5ff] text-[#000000] font-bold animate-pulse' 
                             : m.done 
-                              ? 'bg-emerald-950/40 border-emerald-800 text-emerald-400' 
-                              : 'bg-[#020d0f] border-[#0d343c] text-[#54757d]'
+                              ? 'bg-[#004850] border-[#00e5ff] text-white' 
+                              : 'bg-[#eff6f5] border-[#d5e5e3] text-[#54757d]'
                         }`}
                       >
                         {m.step}
@@ -442,9 +442,9 @@ export default function StudentDashboard() {
               </div>
 
               {/* Kanban Task Management Board */}
-              <div className="bg-[#04181c] border border-[#0d343c] p-6 rounded-2xl space-y-4">
+              <div className="bg-white border border-[#d5e5e3] p-6 rounded-2xl space-y-4">
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                  <h3 className="text-base font-bold text-white flex items-center gap-2">
+                  <h3 className="text-base font-bold text-[#061d21] flex items-center gap-2">
                     <GitBranch className="w-5 h-5 text-[#00e5ff]" /> Project Kanban Task Board
                   </h3>
                   
@@ -456,7 +456,7 @@ export default function StudentDashboard() {
                       value={newTaskTitle}
                       onChange={(e) => setNewTaskTitle(e.target.value)}
                       onKeyDown={(e) => e.key === 'Enter' && handleAddTask()}
-                      className="bg-[#020d0f] border border-[#0d343c] focus:border-[#00e5ff] px-3 py-1.5 text-xs text-white rounded-lg outline-none flex-1 sm:w-64"
+                      className="bg-[#eff6f5] border border-[#d5e5e3] focus:border-[#00e5ff] px-3 py-1.5 text-xs text-[#061d21] rounded-lg outline-none flex-1 sm:w-64"
                     />
                     <button 
                       onClick={handleAddTask}
@@ -475,14 +475,14 @@ export default function StudentDashboard() {
                     { key: 'review', label: 'Under Review', border: 'border-indigo-500/40' },
                     { key: 'done', label: 'Completed', border: 'border-emerald-500/40' },
                   ].map((col) => (
-                    <div key={col.key} className={`bg-[#020d0f] border-t-2 ${col.border} border-x border-b border-[#0d343c] p-3 rounded-xl space-y-3 min-h[220px]`}>
-                      <span className="text-xs font-mono uppercase text-[#7f9ca4] font-bold block pb-1 border-b border-[#0d343c]/60">
+                    <div key={col.key} className={`bg-[#eff6f5] border-t-2 ${col.border} border-x border-b border-[#d5e5e3] p-3 rounded-xl space-y-3 min-h[220px]`}>
+                      <span className="text-xs font-mono uppercase text-[#4a6b72] font-bold block pb-1 border-b border-[#d5e5e3]/60">
                         {col.label} ({tasks.filter(t => t.status === col.key).length})
                       </span>
                       {tasks.filter(t => t.status === col.key).map((t) => (
-                        <div key={t.id} className="p-3 bg-[#04181c] border border-[#0d343c] rounded-lg space-y-2 text-xs">
-                          <p className="font-semibold text-white">{t.title}</p>
-                          <div className="flex items-center justify-between text-[10px] text-[#7f9ca4]">
+                        <div key={t.id} className="p-3 bg-white border border-[#d5e5e3] rounded-lg space-y-2 text-xs">
+                          <p className="font-semibold text-[#061d21]">{t.title}</p>
+                          <div className="flex items-center justify-between text-[10px] text-[#4a6b72]">
                             <span>{t.assignee}</span>
                             <span className="flex items-center gap-1"><Clock className="w-3 h-3 text-[#00e5ff]" /> {t.dueDate}</span>
                           </div>
@@ -499,13 +499,13 @@ export default function StudentDashboard() {
           {/* ================= VIEW 2: INTEREST MATCHING ================= */}
           {activeTab === 'matching' && (
             <div className="space-y-6">
-              <div className="bg-[#04181c] border border-[#0d343c] p-6 rounded-2xl space-y-4">
-                <div className="flex items-center justify-between border-b border-[#0d343c] pb-3">
+              <div className="bg-white border border-[#d5e5e3] p-6 rounded-2xl space-y-4">
+                <div className="flex items-center justify-between border-b border-[#d5e5e3] pb-3">
                   <div>
-                    <h2 className="text-xl font-bold text-white font-serif flex items-center gap-2">
+                    <h2 className="text-xl font-bold text-[#061d21] font-serif flex items-center gap-2">
                       <Sparkles className="w-5 h-5 text-[#00e5ff]" /> AI Supervisor & Collaborator Matching Engine
                     </h2>
-                    <p className="text-xs text-[#7f9ca4] mt-0.5">Filter by research interest domain to discover compatible supervisors and student peers.</p>
+                    <p className="text-xs text-[#4a6b72] mt-0.5">Filter by research interest domain to discover compatible supervisors and student peers.</p>
                   </div>
                 </div>
 
@@ -518,7 +518,7 @@ export default function StudentDashboard() {
                       className={`px-3.5 py-1.5 rounded-full text-xs font-mono transition ${
                         selectedDomain === domain 
                           ? 'bg-[#00e5ff] text-[#031114] font-bold shadow-[0_0_12px_rgba(0,229,255,0.3)]' 
-                          : 'bg-[#020d0f] border border-[#0d343c] text-[#7f9ca4] hover:text-white'
+                          : 'bg-[#eff6f5] border border-[#d5e5e3] text-[#4a6b72] hover:text-[#061d21]'
                       }`}
                     >
                       {domain}
@@ -529,7 +529,7 @@ export default function StudentDashboard() {
 
               {/* Matching Results List */}
               <div className="space-y-4">
-                <h3 className="text-xs font-mono uppercase text-[#7f9ca4] tracking-wider">
+                <h3 className="text-xs font-mono uppercase text-[#4a6b72] tracking-wider">
                   Recommended Supervisors for <span className="text-[#00e5ff]">{selectedDomain}</span>
                 </h3>
 
@@ -537,16 +537,16 @@ export default function StudentDashboard() {
                   {supervisors
                     .filter(s => selectedDomain === 'AI' || s.domain === selectedDomain)
                     .map((s) => (
-                      <div key={s.id} className="bg-[#04181c] border border-[#0d343c] p-5 rounded-2xl flex flex-col justify-between space-y-4">
+                      <div key={s.id} className="bg-white border border-[#d5e5e3] p-5 rounded-2xl flex flex-col justify-between space-y-4">
                         <div>
                           <div className="flex items-center justify-between">
                             <span className="text-xs text-[#00e5ff] font-mono font-bold">{s.domain}</span>
-                            <span className="px-2.5 py-0.5 rounded bg-emerald-950/60 border border-emerald-800 text-emerald-400 text-[10px] font-mono">
+                            <span className="px-2.5 py-0.5 rounded bg-[#004850] border border-[#00e5ff] text-[#00e5ff] text-[10px] font-mono">
                               {s.matchScore}% Match
                             </span>
                           </div>
-                          <h4 className="text-base font-bold text-white mt-1">{s.name}</h4>
-                          <p className="text-xs text-[#7f9ca4] mt-1">Topic: <span className="text-[#e2f1f4]">{s.topic}</span></p>
+                          <h4 className="text-base font-bold text-[#061d21] mt-1">{s.name}</h4>
+                          <p className="text-xs text-[#4a6b72] mt-1">Topic: <span className="text-[#061d21]">{s.topic}</span></p>
                           <p className="text-[11px] text-[#54757d] mt-2">Open Student Spots: {s.accepting}</p>
                         </div>
 
@@ -570,22 +570,22 @@ export default function StudentDashboard() {
           {activeTab === 'projects' && (
             <div className="space-y-6">
               {/* Submitted Applications List */}
-              <div className="bg-[#04181c] border border-[#0d343c] p-6 rounded-2xl space-y-4">
-                <h3 className="text-lg font-bold text-white font-serif">My Submitted Research Applications</h3>
+              <div className="bg-white border border-[#d5e5e3] p-6 rounded-2xl space-y-4">
+                <h3 className="text-lg font-bold text-[#061d21] font-serif">My Submitted Research Applications</h3>
                 
                 <div className="space-y-3">
                   {applications.map((app) => (
-                    <div key={app.id} className="p-4 bg-[#020d0f] border border-[#0d343c] rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div key={app.id} className="p-4 bg-[#eff6f5] border border-[#d5e5e3] rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                       <div>
-                        <h4 className="font-semibold text-white text-sm">{app.projectTitle}</h4>
-                        <p className="text-xs text-[#7f9ca4] mt-0.5">Supervisor: {app.supervisor} • Submitted: {app.submittedDate}</p>
+                        <h4 className="font-semibold text-[#061d21] text-sm">{app.projectTitle}</h4>
+                        <p className="text-xs text-[#4a6b72] mt-0.5">Supervisor: {app.supervisor} • Submitted: {app.submittedDate}</p>
                       </div>
                       <span className={`px-3 py-1 rounded-full text-xs font-mono w-fit ${
                         app.status === 'ACCEPTED' 
-                          ? 'bg-emerald-950/60 text-emerald-400 border border-emerald-800' 
+                          ? 'bg-white text-[#008f28] border border-[#00e5ff]' 
                           : app.status === 'PENDING'
-                            ? 'bg-amber-950/60 text-amber-400 border border-amber-800'
-                            : 'bg-red-950/60 text-red-400 border border-red-800'
+                            ? 'bg-white text-red-600 border border-[#00e5ff]'
+                            : 'bg-white text-red-400 border border-[#00e5ff]'
                       }`}>
                         {app.status}
                       </span>
@@ -599,19 +599,19 @@ export default function StudentDashboard() {
           {/* ================= VIEW 4: COURSE MARKETPLACE ================= */}
           {activeTab === 'courses' && (
             <div className="space-y-6">
-              <div className="bg-[#04181c] border border-[#0d343c] p-6 rounded-2xl space-y-6">
-                <div className="flex justify-between items-center border-b border-[#0d343c] pb-4">
+              <div className="bg-white border border-[#d5e5e3] p-6 rounded-2xl space-y-6">
+                <div className="flex justify-between items-center border-b border-[#d5e5e3] pb-4">
                   <div>
-                    <h2 className="text-xl font-bold text-white font-serif">Enrolled Research Paper Courses</h2>
-                    <p className="text-xs text-[#7f9ca4] mt-1">Structured learning path for SCI/IEEE paper drafting and literature review.</p>
+                    <h2 className="text-xl font-bold text-[#000000] font-serif">Enrolled Research Paper Courses</h2>
+                    <p className="text-xs text-[#2f525a] mt-1">Structured learning path for SCI/IEEE paper drafting and literature review.</p>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {enrolledCourses.map((c) => (
-                    <div key={c.id} className="p-5 bg-[#020d0f] border border-[#0d343c] rounded-xl space-y-3">
-                      <h4 className="font-bold text-white text-sm">{c.title}</h4>
-                      <p className="text-xs text-[#7f9ca4]">Instructor: {c.instructor}</p>
+                    <div key={c.id} className="p-5 bg-[#eff6f5] border border-[#d5e5e3] rounded-xl space-y-3">
+                      <h4 className="font-bold text-[#061d21] text-sm">{c.title}</h4>
+                      <p className="text-xs text-[#4a6b72]">Instructor: {c.instructor}</p>
                       
                       {/* Progress Bar */}
                       <div className="space-y-1">
@@ -619,7 +619,7 @@ export default function StudentDashboard() {
                           <span>Progress</span>
                           <span>{c.progress}%</span>
                         </div>
-                        <div className="w-full h-2 bg-[#0d343c] rounded-full overflow-hidden">
+                        <div className="w-full h-2 bg-[#00b2d6] rounded-full overflow-hidden">
                           <div className="h-full bg-[#00e5ff] transition-all duration-300" style={{ width: `${c.progress}%` }} />
                         </div>
                       </div>
@@ -639,8 +639,8 @@ export default function StudentDashboard() {
             <div className="space-y-6">
               
               {/* Profile Header & Action Control Card */}
-              <div className="relative overflow-hidden bg-linear-to-r from-[#04181c] via-[#06242a] to-[#04181c] p-6 sm:p-8 rounded-2xl border border-[#0d343c] shadow-xl">
-                <div className="absolute top-0 right-0 w-96 h-96 bg-[#00e5ff]/5 rounded-full filter blur-3xl pointer-events-none" />
+              <div className="relative overflow-hidden bg-linear-to-r from-[#ffffff] via-[#00d5ff] to-[#feffff] p-6 sm:p-8 rounded-2xl border border-[#d5e5e3] shadow-xl">
+                <div className="absolute top-0 right-0 w-96 h-96 bg-[#feffff] rounded-full filter blur-3xl pointer-events-none" />
                 
                 <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
                   
@@ -652,7 +652,7 @@ export default function StudentDashboard() {
                       {isEditingProfile ? (
                         <div 
                           onClick={() => fileInputRef.current?.click()}
-                          className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-[#082e36] border-2 border-[#00e5ff]/60 flex items-center justify-center text-white font-serif text-3xl font-bold shadow-[0_0_20px_rgba(0,229,255,0.2)] overflow-hidden cursor-pointer relative"
+                          className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-[#004850] border-2 border-[#00e5ff] flex items-center justify-center text-[#000000] font-serif text-3xl font-bold shadow-[0_0_20px_rgba(0,229,255,0.2)] overflow-hidden cursor-pointer relative"
                         >
                           {tempProfile.profileImage ? (
                             <img src={tempProfile.profileImage} alt="Preview" className="w-full h-full object-cover" />
@@ -661,13 +661,13 @@ export default function StudentDashboard() {
                           )}
 
                           {/* Hover Upload Overlay */}
-                          <div className="absolute inset-0 bg-[#031114]/85 flex flex-col items-center justify-center text-xs font-mono text-[#00e5ff] opacity-0 group-hover:opacity-100 transition duration-200">
+                          <div className="absolute inset-0 bg-[#eff5f4] flex flex-col items-center justify-center text-xs font-mono text-[#00e5ff] opacity-0 group-hover:opacity-100 transition duration-200">
                             <UploadCloud className="w-6 h-6 mb-1 text-[#00e5ff]" />
                             <span>Change</span>
                           </div>
                         </div>
                       ) : (
-                        <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-[#082e36] border-2 border-[#00e5ff]/40 flex items-center justify-center text-white font-serif text-3xl font-bold shadow-[0_0_20px_rgba(0,229,255,0.15)] overflow-hidden">
+                        <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-[#004850] border-2 border-[#00e5ff] flex items-center justify-center text-[#061d21] font-serif text-3xl font-bold shadow-[0_0_20px_rgba(0,229,255,0.15)] overflow-hidden">
                           {profile.profileImage ? (
                             <img src={profile.profileImage} alt={profile.fullName} className="w-full h-full object-cover" />
                           ) : (
@@ -680,7 +680,7 @@ export default function StudentDashboard() {
                       {isEditingProfile && tempProfile.profileImage && (
                         <button
                           onClick={handleRemoveImage}
-                          className="absolute -top-2 -right-2 bg-red-500/90 text-white rounded-full p-1 hover:bg-red-600 transition shadow-md"
+                          className="absolute -top-2 -right-2 bg-red-500/90 text-[#061d21] rounded-full p-1 hover:bg-red-600 transition shadow-md"
                           title="Remove Photo"
                         >
                           <X className="w-3.5 h-3.5" />
@@ -690,22 +690,22 @@ export default function StudentDashboard() {
 
                     <div className="space-y-1">
                       <div className="flex items-center gap-2 flex-wrap">
-                        <h1 className="text-2xl sm:text-3xl font-serif text-white font-bold tracking-tight">
+                        <h1 className="text-2xl sm:text-3xl font-serif text-[#061d21] font-bold tracking-tight">
                           {isEditingProfile ? tempProfile.fullName || 'Your Name' : profile.fullName}
                         </h1>
-                        <span className="px-2.5 py-0.5 rounded-full bg-[#00e5ff]/10 border border-[#00e5ff]/30 text-[#00e5ff] text-[10px] font-mono">
+                        <span className="px-2.5 py-0.5 rounded-full bg-[#49dded] border border-[#004850] text-[#ffffff] text-[10px] font-mono">
                           Verified Scholar
                         </span>
                       </div>
                       
-                      <p className="text-xs sm:text-sm text-[#00e5ff] font-mono flex items-center gap-1.5">
+                      <p className="text-xs sm:text-sm text-[#000000] font-mono flex items-center gap-1.5">
                         <GraduationCap className="w-4 h-4" />
                         {isEditingProfile ? tempProfile.education : profile.education}
                       </p>
 
-                      <p className="text-xs text-[#7f9ca4] flex items-center gap-2 pt-1">
+                      <p className="text-xs text-[#2a5059] flex items-center gap-2 pt-1">
                         <span className="flex items-center gap-1">
-                          <Building2 className="w-3.5 h-3.5 text-[#54757d]" />
+                          <Building2 className="w-3.5 h-3.5 text-[#2a5059]" />
                           {isEditingProfile ? tempProfile.university : profile.university}
                         </span>
                         <span>•</span>
@@ -720,13 +720,13 @@ export default function StudentDashboard() {
                       <>
                         <button 
                           onClick={handleCancelEditing}
-                          className="px-4 py-2.5 rounded-lg border border-[#0d343c] bg-[#031114] text-[#7f9ca4] hover:text-white hover:bg-[#06242a] text-xs font-medium flex items-center gap-2 transition"
+                          className="px-4 py-2.5 rounded-lg border border-[#d5e5e3] bg-[#f4f8f7] text-[#000000] hover:text-[#000000] hover:bg-[#0c9bab] text-xs font-medium flex items-center gap-2 transition"
                         >
                           <RotateCcw className="w-4 h-4" /> Cancel
                         </button>
                         <button 
                           onClick={handleSaveProfile}
-                          className="px-5 py-2.5 rounded-lg bg-[#00e5ff] text-[#031114] text-xs font-bold flex items-center gap-2 hover:bg-[#33ebff] shadow-[0_0_15px_rgba(0,229,255,0.3)] transition"
+                          className="px-5 py-2.5 rounded-lg bg-[#00e5ff] text-[#031114] text-xs font-bold flex items-center gap-2 hover:bg-[#0c9bab] shadow-[0_0_15px_rgba(0,229,255,0.3)] transition"
                         >
                           <Save className="w-4 h-4" /> Save Profile
                         </button>
@@ -734,7 +734,7 @@ export default function StudentDashboard() {
                     ) : (
                       <button 
                         onClick={handleStartEditing}
-                        className="px-5 py-2.5 rounded-lg bg-[#00e5ff] text-[#031114] text-xs font-bold flex items-center gap-2 hover:bg-[#33ebff] shadow-[0_0_15px_rgba(0,229,255,0.2)] transition"
+                        className="px-5 py-2.5 rounded-lg bg-[#00e5ff] text-[#000000] text-xs font-bold flex items-center gap-2 hover:bg-[#33ebff] shadow-[0_0_15px_rgba(0,229,255,0.2)] transition"
                       >
                         <Edit3 className="w-4 h-4" /> Edit Profile Information
                       </button>
@@ -751,74 +751,74 @@ export default function StudentDashboard() {
                 <div className="lg:col-span-2 space-y-6">
                   
                   {/* General Profile & Bio */}
-                  <div className="bg-[#04181c]/90 border border-[#0d343c] p-6 rounded-2xl space-y-5">
-                    <div className="flex items-center justify-between border-b border-[#0d343c] pb-3">
+                  <div className="bg-white/90 border border-[#d5e5e3] p-6 rounded-2xl space-y-5">
+                    <div className="flex items-center justify-between border-b border-[#d5e5e3] pb-3">
                       <h3 className="text-xs font-mono text-[#00e5ff] uppercase tracking-wider flex items-center gap-2 font-bold">
                         <User className="w-4 h-4" /> General Academic Information
                       </h3>
-                      {isEditingProfile && <span className="text-[10px] font-mono text-[#7f9ca4]">Editing Enabled</span>}
+                      {isEditingProfile && <span className="text-[10px] font-mono text-[#4a6b72]">Editing Enabled</span>}
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="text-xs text-[#7f9ca4] block font-mono mb-1.5">Full Name</label>
+                        <label className="text-xs text-[#4a6b72] block font-mono mb-1.5">Full Name</label>
                         {isEditingProfile ? (
                           <input 
                             type="text" 
                             value={tempProfile.fullName} 
                             onChange={(e) => setTempProfile({...tempProfile, fullName: e.target.value})}
-                            className="w-full bg-[#020d0f] border border-[#0d343c] focus:border-[#00e5ff] p-2.5 text-xs rounded-lg text-white outline-none transition"
+                            className="w-full bg-[#eff6f5] border border-[#d5e5e3] focus:border-[#00e5ff] p-2.5 text-xs rounded-lg text-[#061d21] outline-none transition"
                           />
                         ) : (
-                          <p className="text-sm text-white font-medium bg-[#020d0f]/50 p-2.5 rounded-lg border border-[#0d343c]/50">
+                          <p className="text-sm text-[#061d21] font-medium bg-[#eff6f5]/50 p-2.5 rounded-lg border border-[#d5e5e3]/50">
                             {profile.fullName}
                           </p>
                         )}
                       </div>
 
                       <div>
-                        <label className="text-xs text-[#7f9ca4] block font-mono mb-1.5">Education / Academic Status</label>
+                        <label className="text-xs text-[#4a6b72] block font-mono mb-1.5">Education / Academic Status</label>
                         {isEditingProfile ? (
                           <input 
                             type="text" 
                             value={tempProfile.education} 
                             onChange={(e) => setTempProfile({...tempProfile, education: e.target.value})}
-                            className="w-full bg-[#020d0f] border border-[#0d343c] focus:border-[#00e5ff] p-2.5 text-xs rounded-lg text-white outline-none transition"
+                            className="w-full bg-[#eff6f5] border border-[#d5e5e3] focus:border-[#00e5ff] p-2.5 text-xs rounded-lg text-[#061d21] outline-none transition"
                           />
                         ) : (
-                          <p className="text-sm text-white font-medium bg-[#020d0f]/50 p-2.5 rounded-lg border border-[#0d343c]/50">
+                          <p className="text-sm text-[#061d21] font-medium bg-[#eff6f5]/50 p-2.5 rounded-lg border border-[#d5e5e3]/50">
                             {profile.education}
                           </p>
                         )}
                       </div>
 
                       <div>
-                        <label className="text-xs text-[#7f9ca4] block font-mono mb-1.5">University / Institution</label>
+                        <label className="text-xs text-[#4a6b72] block font-mono mb-1.5">University / Institution</label>
                         {isEditingProfile ? (
                           <input 
                             type="text" 
                             value={tempProfile.university} 
                             onChange={(e) => setTempProfile({...tempProfile, university: e.target.value})}
-                            className="w-full bg-[#020d0f] border border-[#0d343c] focus:border-[#00e5ff] p-2.5 text-xs rounded-lg text-white outline-none transition"
+                            className="w-full bg-[#eff6f5] border border-[#d5e5e3] focus:border-[#00e5ff] p-2.5 text-xs rounded-lg text-[#061d21] outline-none transition"
                           />
                         ) : (
-                          <p className="text-sm text-white font-medium bg-[#020d0f]/50 p-2.5 rounded-lg border border-[#0d343c]/50">
+                          <p className="text-sm text-[#061d21] font-medium bg-[#eff6f5]/50 p-2.5 rounded-lg border border-[#d5e5e3]/50">
                             {profile.university}
                           </p>
                         )}
                       </div>
 
                       <div>
-                        <label className="text-xs text-[#7f9ca4] block font-mono mb-1.5">Department / Field</label>
+                        <label className="text-xs text-[#4a6b72] block font-mono mb-1.5">Department / Field</label>
                         {isEditingProfile ? (
                           <input 
                             type="text" 
                             value={tempProfile.department} 
                             onChange={(e) => setTempProfile({...tempProfile, department: e.target.value})}
-                            className="w-full bg-[#020d0f] border border-[#0d343c] focus:border-[#00e5ff] p-2.5 text-xs rounded-lg text-white outline-none transition"
+                            className="w-full bg-[#eff6f5] border border-[#d5e5e3] focus:border-[#00e5ff] p-2.5 text-xs rounded-lg text-[#061d21] outline-none transition"
                           />
                         ) : (
-                          <p className="text-sm text-white font-medium bg-[#020d0f]/50 p-2.5 rounded-lg border border-[#0d343c]/50">
+                          <p className="text-sm text-[#061d21] font-medium bg-[#eff6f5]/50 p-2.5 rounded-lg border border-[#d5e5e3]/50">
                             {profile.department}
                           </p>
                         )}
@@ -826,17 +826,17 @@ export default function StudentDashboard() {
                     </div>
 
                     <div>
-                      <label className="text-xs text-[#7f9ca4] block font-mono mb-1.5">Research Bio & Statement</label>
+                      <label className="text-xs text-[#4a6b72] block font-mono mb-1.5">Research Bio & Statement</label>
                       {isEditingProfile ? (
                         <textarea 
                           rows={3}
                           value={tempProfile.bio} 
                           onChange={(e) => setTempProfile({...tempProfile, bio: e.target.value})}
-                          className="w-full bg-[#020d0f] border border-[#0d343c] focus:border-[#00e5ff] p-3 text-xs rounded-lg text-white outline-none transition resize-none"
+                          className="w-full bg-[#eff6f5] border border-[#d5e5e3] focus:border-[#00e5ff] p-3 text-xs rounded-lg text-[#061d21] outline-none transition resize-none"
                           placeholder="Briefly describe your research focus and aspirations..."
                         />
                       ) : (
-                        <p className="text-xs text-[#c2dce2] leading-relaxed bg-[#020d0f]/50 p-3 rounded-lg border border-[#0d343c]/50 font-sans">
+                        <p className="text-xs text-[#c2dce2] leading-relaxed bg-[#eff6f5]/50 p-3 rounded-lg border border-[#d5e5e3]/50 font-sans">
                           {profile.bio || 'No bio specified.'}
                         </p>
                       )}
@@ -844,23 +844,23 @@ export default function StudentDashboard() {
                   </div>
 
                   {/* Skills Tag Management */}
-                  <div className="bg-[#04181c]/90 border border-[#0d343c] p-6 rounded-2xl space-y-6">
-                    <div className="flex items-center justify-between border-b border-[#0d343c] pb-3">
+                  <div className="bg-white/90 border border-[#d5e5e3] p-6 rounded-2xl space-y-6">
+                    <div className="flex items-center justify-between border-b border-[#d5e5e3] pb-3">
                       <h3 className="text-xs font-mono text-[#00e5ff] uppercase tracking-wider flex items-center gap-2 font-bold">
                         <Code2 className="w-4 h-4" /> Skills, Tools & Programming Languages
                       </h3>
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-xs text-[#7f9ca4] block font-mono">Technical & Lab Skills</label>
+                      <label className="text-xs text-[#4a6b72] block font-mono">Technical & Lab Skills</label>
                       <div className="flex flex-wrap gap-2">
                         {(isEditingProfile ? tempProfile.skills : profile.skills).map((s, idx) => (
-                          <span key={idx} className="px-3 py-1.5 bg-[#020d0f] border border-[#0d343c] rounded-lg text-xs text-[#e2f1f4] flex items-center gap-2">
+                          <span key={idx} className="px-3 py-1.5 bg-[#eff6f5] border border-[#d5e5e3] rounded-lg text-xs text-[#061d21] flex items-center gap-2">
                             {s}
                             {isEditingProfile && (
                               <button 
                                 onClick={() => removeTagItem('skills', idx)} 
-                                className="text-[#7f9ca4] hover:text-red-400 transition"
+                                className="text-[#4a6b72] hover:text-red-400 transition"
                               >
                                 <X className="w-3.5 h-3.5" />
                               </button>
@@ -877,12 +877,12 @@ export default function StudentDashboard() {
                             onChange={(e) => setNewSkillInput(e.target.value)}
                             onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), addTagItem('skills', newSkillInput, setNewSkillInput))}
                             placeholder="Add skill (e.g. PyTorch, Next.js)..."
-                            className="flex-1 bg-[#020d0f] border border-[#0d343c] focus:border-[#00e5ff] px-3 py-1.5 text-xs rounded-lg text-white outline-none"
+                            className="flex-1 bg-[#eff6f5] border border-[#d5e5e3] focus:border-[#00e5ff] px-3 py-1.5 text-xs rounded-lg text-[#061d21] outline-none"
                           />
                           <button 
                             type="button" 
                             onClick={() => addTagItem('skills', newSkillInput, setNewSkillInput)}
-                            className="px-3 py-1.5 bg-[#0d343c] text-[#00e5ff] text-xs font-mono rounded-lg hover:bg-[#00e5ff] hover:text-[#031114] transition flex items-center gap-1"
+                            className="px-3 py-1.5 bg-[#00e5ff] text-[#004850] text-xs font-mono rounded-lg hover:bg-[#004850] hover:text-[#00e5ff] transition flex items-center gap-1"
                           >
                             <Plus className="w-3.5 h-3.5" /> Add
                           </button>
@@ -891,8 +891,8 @@ export default function StudentDashboard() {
                     </div>
 
                     {/* Programming Languages */}
-                    <div className="space-y-2 pt-2 border-t border-[#0d343c]/60">
-                      <label className="text-xs text-[#7f9ca4] block font-mono">Programming Languages</label>
+                    <div className="space-y-2 pt-2 border-t border-[#d5e5e3]/60">
+                      <label className="text-xs text-[#4a6b72] block font-mono">Programming Languages</label>
                       <div className="flex flex-wrap gap-2">
                         {(isEditingProfile ? tempProfile.languages : profile.languages).map((l, idx) => (
                           <span key={idx} className="px-3 py-1.5 bg-[#00e5ff]/10 border border-[#00e5ff]/30 rounded-lg text-xs text-[#00e5ff] font-mono flex items-center gap-2">
@@ -917,12 +917,12 @@ export default function StudentDashboard() {
                             onChange={(e) => setNewLangInput(e.target.value)}
                             onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), addTagItem('languages', newLangInput, setNewLangInput))}
                             placeholder="Add language (e.g. Python, C++)..."
-                            className="flex-1 bg-[#020d0f] border border-[#0d343c] focus:border-[#00e5ff] px-3 py-1.5 text-xs rounded-lg text-white outline-none"
+                            className="flex-1 bg-[#eff6f5] border border-[#d5e5e3] focus:border-[#00e5ff] px-3 py-1.5 text-xs rounded-lg text-[#061d21] outline-none"
                           />
                           <button 
                             type="button" 
                             onClick={() => addTagItem('languages', newLangInput, setNewLangInput)}
-                            className="px-3 py-1.5 bg-[#0d343c] text-[#00e5ff] text-xs font-mono rounded-lg hover:bg-[#00e5ff] hover:text-[#031114] transition flex items-center gap-1"
+                            className="px-3 py-1.5 bg-[#00e5ff] text-[#004850] text-xs font-mono rounded-lg hover:bg-[#004850] hover:text-[#00e5ff] transition flex items-center gap-1"
                           >
                             <Plus className="w-3.5 h-3.5" /> Add
                           </button>
@@ -931,16 +931,16 @@ export default function StudentDashboard() {
                     </div>
 
                     {/* Active Research Interests */}
-                    <div className="space-y-2 pt-2 border-t border-[#0d343c]/60">
-                      <label className="text-xs text-[#7f9ca4] block font-mono">Primary Research Interests</label>
+                    <div className="space-y-2 pt-2 border-t border-[#d5e5e3]/60">
+                      <label className="text-xs text-[#4a6b72] block font-mono">Primary Research Interests</label>
                       <div className="flex flex-wrap gap-2">
                         {(isEditingProfile ? tempProfile.interests : profile.interests).map((interest, idx) => (
-                          <span key={idx} className="px-3 py-1.5 bg-[#082e36] border border-[#00e5ff]/20 rounded-full text-xs text-white font-mono flex items-center gap-2">
+                          <span key={idx} className="px-3 py-1.5 bg-[#86cad8] border border-[#00e5ff] rounded-full text-xs text-[#000000] font-mono flex items-center gap-2">
                             {interest}
                             {isEditingProfile && (
                               <button 
                                 onClick={() => removeTagItem('interests', idx)} 
-                                className="text-[#7f9ca4] hover:text-red-400 transition"
+                                className="text-[#4a6b72] hover:text-red-400 transition"
                               >
                                 <X className="w-3.5 h-3.5" />
                               </button>
@@ -957,12 +957,12 @@ export default function StudentDashboard() {
                             onChange={(e) => setNewInterestInput(e.target.value)}
                             onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), addTagItem('interests', newInterestInput, setNewInterestInput))}
                             placeholder="Add domain (e.g. Bioinformatics, AI)..."
-                            className="flex-1 bg-[#020d0f] border border-[#0d343c] focus:border-[#00e5ff] px-3 py-1.5 text-xs rounded-lg text-white outline-none"
+                            className="flex-1 bg-[#eff6f5] border border-[#d5e5e3] focus:border-[#00e5ff] px-3 py-1.5 text-xs rounded-lg text-[#061d21] outline-none"
                           />
                           <button 
                             type="button" 
                             onClick={() => addTagItem('interests', newInterestInput, setNewInterestInput)}
-                            className="px-3 py-1.5 bg-[#0d343c] text-[#00e5ff] text-xs font-mono rounded-lg hover:bg-[#00e5ff] hover:text-[#031114] transition flex items-center gap-1"
+                            className="px-3 py-1.5 bg-[#00e5ff] text-[#004850] text-xs font-mono rounded-lg hover:bg-[#004850] hover:text-[#00e5ff] transition flex items-center gap-1"
                           >
                             <Plus className="w-3.5 h-3.5" /> Add
                           </button>
@@ -972,8 +972,8 @@ export default function StudentDashboard() {
                   </div>
 
                   {/* Publications Section */}
-                  <div className="bg-[#04181c]/90 border border-[#0d343c] p-6 rounded-2xl space-y-4">
-                    <div className="flex items-center justify-between border-b border-[#0d343c] pb-3">
+                  <div className="bg-white/90 border border-[#d5e5e3] p-6 rounded-2xl space-y-4">
+                    <div className="flex items-center justify-between border-b border-[#d5e5e3] pb-3">
                       <h3 className="text-xs font-mono text-[#00e5ff] uppercase tracking-wider flex items-center gap-2 font-bold">
                         <BookMarked className="w-4 h-4" /> Publications & Preprints
                       </h3>
@@ -981,7 +981,7 @@ export default function StudentDashboard() {
 
                     <div className="space-y-3">
                       {(isEditingProfile ? tempProfile.publications : profile.publications).map((pub, idx) => (
-                        <div key={idx} className="p-3.5 bg-[#020d0f] border border-[#0d343c] rounded-xl flex items-start justify-between gap-3 group">
+                        <div key={idx} className="p-3.5 bg-[#eff6f5] border border-[#d5e5e3] rounded-xl flex items-start justify-between gap-3 group">
                           <p className="text-xs text-[#8faab2] leading-relaxed font-sans flex-1">
                             {pub}
                           </p>
@@ -1008,12 +1008,12 @@ export default function StudentDashboard() {
                             value={newPubInput}
                             onChange={(e) => setNewPubInput(e.target.value)}
                             placeholder="Enter citation (e.g. Vance, A. et al. (2026)...)"
-                            className="w-full bg-[#020d0f] border border-[#0d343c] focus:border-[#00e5ff] p-2.5 text-xs rounded-lg text-white outline-none resize-none"
+                            className="w-full bg-[#eff6f5] border border-[#d5e5e3] focus:border-[#00e5ff] p-2.5 text-xs rounded-lg text-[#061d21] outline-none resize-none"
                           />
                           <button 
                             type="button" 
                             onClick={addPublication}
-                            className="px-4 py-2 bg-[#0d343c] text-[#00e5ff] text-xs font-mono rounded-lg hover:bg-[#00e5ff] hover:text-[#031114] transition flex items-center gap-1.5"
+                            className="px-4 py-2 bg-[#00e5ff] text-[#004850] text-xs font-mono rounded-lg hover:bg-[#004850] hover:text-[#00e5ff] transition flex items-center gap-1.5"
                           >
                             <Plus className="w-4 h-4" /> Add Publication Record
                           </button>
@@ -1028,8 +1028,8 @@ export default function StudentDashboard() {
                 <div className="space-y-6">
                   
                   {/* External Links */}
-                  <div className="bg-[#04181c]/90 border border-[#0d343c] p-6 rounded-2xl space-y-5">
-                    <div className="flex items-center justify-between border-b border-[#0d343c] pb-3">
+                  <div className="bg-white/90 border border-[#d5e5e3] p-6 rounded-2xl space-y-5">
+                    <div className="flex items-center justify-between border-b border-[#d5e5e3] pb-3">
                       <h3 className="text-xs font-mono text-[#00e5ff] uppercase tracking-wider flex items-center gap-2 font-bold">
                         <Globe className="w-4 h-4" /> Profiles & External Links
                       </h3>
@@ -1037,20 +1037,20 @@ export default function StudentDashboard() {
 
                     <div className="space-y-4 text-xs">
                       <div>
-                        <label className="text-[#698890] block font-mono mb-1">ORCID iD</label>
+                        <label className="text-[#000000] block font-mono mb-1">ORCID iD</label>
                         {isEditingProfile ? (
                           <input 
                             type="text" 
                             value={tempProfile.orcid}
                             onChange={(e) => setTempProfile({...tempProfile, orcid: e.target.value})}
-                            className="w-full bg-[#020d0f] border border-[#0d343c] focus:border-[#00e5ff] p-2 text-xs rounded text-white font-mono outline-none"
+                            className="w-full bg-[#eff6f5] border border-[#d5e5e3] focus:border-[#00e5ff] p-2 text-xs rounded text-[#061d21] font-mono outline-none"
                           />
                         ) : (
                           <a 
                             href={`https://orcid.org/${profile.orcid}`} 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="text-[#00e5ff] flex items-center gap-1.5 hover:underline font-mono bg-[#020d0f]/50 p-2 rounded border border-[#0d343c]/50 truncate"
+                            className="text-[#00e5ff] flex items-center gap-1.5 hover:underline font-mono bg-[#eff6f5]/50 p-2 rounded border border-[#d5e5e3]/50 truncate"
                           >
                             <Award className="w-3.5 h-3.5 shrink-0" />
                             <span className="truncate">{profile.orcid || 'Not provided'}</span>
@@ -1060,20 +1060,20 @@ export default function StudentDashboard() {
                       </div>
 
                       <div>
-                        <label className="text-[#698890] block font-mono mb-1">Google Scholar URL</label>
+                        <label className="text-[#000000] block font-mono mb-1">Google Scholar URL</label>
                         {isEditingProfile ? (
                           <input 
                             type="text" 
                             value={tempProfile.googleScholar}
                             onChange={(e) => setTempProfile({...tempProfile, googleScholar: e.target.value})}
-                            className="w-full bg-[#020d0f] border border-[#0d343c] focus:border-[#00e5ff] p-2 text-xs rounded text-white font-mono outline-none"
+                            className="w-full bg-[#eff6f5] border border-[#d5e5e3] focus:border-[#00e5ff] p-2 text-xs rounded text-[#061d21] font-mono outline-none"
                           />
                         ) : (
                           <a 
                             href={profile.googleScholar} 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="text-[#00e5ff] flex items-center gap-1.5 hover:underline font-mono bg-[#020d0f]/50 p-2 rounded border border-[#0d343c]/50 truncate"
+                            className="text-[#00e5ff] flex items-center gap-1.5 hover:underline font-mono bg-[#eff6f5]/50 p-2 rounded border border-[#d5e5e3]/50 truncate"
                           >
                             <GraduationCap className="w-3.5 h-3.5 shrink-0" />
                             <span className="truncate">{profile.googleScholar || 'Not provided'}</span>
@@ -1083,20 +1083,20 @@ export default function StudentDashboard() {
                       </div>
 
                       <div>
-                        <label className="text-[#698890] block font-mono mb-1">GitHub Profile</label>
+                        <label className="text-[#000000] block font-mono mb-1">GitHub Profile</label>
                         {isEditingProfile ? (
                           <input 
                             type="text" 
                             value={tempProfile.github}
                             onChange={(e) => setTempProfile({...tempProfile, github: e.target.value})}
-                            className="w-full bg-[#020d0f] border border-[#0d343c] focus:border-[#00e5ff] p-2 text-xs rounded text-white font-mono outline-none"
+                            className="w-full bg-[#eff6f5] border border-[#d5e5e3] focus:border-[#00e5ff] p-2 text-xs rounded text-[#061d21] font-mono outline-none"
                           />
                         ) : (
                           <a 
                             href={profile.github} 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="text-[#00e5ff] flex items-center gap-1.5 hover:underline font-mono bg-[#020d0f]/50 p-2 rounded border border-[#0d343c]/50 truncate"
+                            className="text-[#00e5ff] flex items-center gap-1.5 hover:underline font-mono bg-[#eff6f5]/50 p-2 rounded border border-[#d5e5e3]/50 truncate"
                           >
                             <Github className="w-3.5 h-3.5 shrink-0" />
                             <span className="truncate">{profile.github || 'Not provided'}</span>
@@ -1106,20 +1106,20 @@ export default function StudentDashboard() {
                       </div>
 
                       <div>
-                        <label className="text-[#698890] block font-mono mb-1">LinkedIn Profile</label>
+                        <label className="text-[#000000] block font-mono mb-1">LinkedIn Profile</label>
                         {isEditingProfile ? (
                           <input 
                             type="text" 
                             value={tempProfile.linkedin}
                             onChange={(e) => setTempProfile({...tempProfile, linkedin: e.target.value})}
-                            className="w-full bg-[#020d0f] border border-[#0d343c] focus:border-[#00e5ff] p-2 text-xs rounded text-white font-mono outline-none"
+                            className="w-full bg-[#eff6f5] border border-[#d5e5e3] focus:border-[#00e5ff] p-2 text-xs rounded text-[#061d21] font-mono outline-none"
                           />
                         ) : (
                           <a 
                             href={profile.linkedin} 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="text-[#00e5ff] flex items-center gap-1.5 hover:underline font-mono bg-[#020d0f]/50 p-2 rounded border border-[#0d343c]/50 truncate"
+                            className="text-[#00e5ff] flex items-center gap-1.5 hover:underline font-mono bg-[#eff6f5]/50 p-2 rounded border border-[#d5e5e3]/50 truncate"
                           >
                             <Linkedin className="w-3.5 h-3.5 shrink-0" />
                             <span className="truncate">{profile.linkedin || 'Not provided'}</span>
@@ -1131,18 +1131,18 @@ export default function StudentDashboard() {
                   </div>
 
                   {/* CV Card */}
-                  <div className="bg-[#04181c]/90 border border-[#0d343c] p-6 rounded-2xl space-y-4">
-                    <div className="flex items-center justify-between border-b border-[#0d343c] pb-3">
+                  <div className="bg-white/90 border border-[#d5e5e3] p-6 rounded-2xl space-y-4">
+                    <div className="flex items-center justify-between border-b border-[#d5e5e3] pb-3">
                       <h3 className="text-xs font-mono text-[#00e5ff] uppercase tracking-wider flex items-center gap-2 font-bold">
                         <FileText className="w-4 h-4" /> Curriculum Vitae (CV)
                       </h3>
                     </div>
 
                     <div className="space-y-3">
-                      <div className="p-3 bg-[#020d0f] border border-[#0d343c] rounded-xl flex items-center gap-3">
+                      <div className="p-3 bg-[#eff6f5] border border-[#d5e5e3] rounded-xl flex items-center gap-3">
                         <Paperclip className="w-5 h-5 text-[#00e5ff] shrink-0" />
                         <div className="min-w-0 flex-1">
-                          <p className="text-xs font-mono text-white truncate">
+                          <p className="text-xs font-mono text-[#061d21] truncate">
                             {isEditingProfile ? tempProfile.resumeUrl : profile.resumeUrl}
                           </p>
                           <span className="text-[10px] text-[#54757d]">PDF Document • Updated 2026</span>
@@ -1151,16 +1151,16 @@ export default function StudentDashboard() {
 
                       {isEditingProfile ? (
                         <div>
-                          <label className="text-[11px] text-[#698890] block mb-1 font-mono">CV Filename / Link</label>
+                          <label className="text-[11px] text-[#000000] block mb-1 font-mono">CV Filename / Link</label>
                           <input 
                             type="text" 
                             value={tempProfile.resumeUrl}
                             onChange={(e) => setTempProfile({...tempProfile, resumeUrl: e.target.value})}
-                            className="w-full bg-[#020d0f] border border-[#0d343c] focus:border-[#00e5ff] p-2 text-xs rounded text-white font-mono outline-none"
+                            className="w-full bg-[#eff6f5] border border-[#d5e5e3] focus:border-[#00e5ff] p-2 text-xs rounded text-[#061d21] font-mono outline-none"
                           />
                         </div>
                       ) : (
-                        <button className="w-full py-2 bg-[#0d343c] border border-[#00e5ff]/30 text-[#00e5ff] text-xs font-mono font-medium rounded-lg hover:bg-[#00e5ff] hover:text-[#031114] transition flex items-center justify-center gap-2">
+                        <button className="w-full py-2 bg-[#00d5ff] border border-[#004850] text-[#000000] text-xs font-mono font-medium rounded-lg hover:bg-[#004850] hover:text-[#00e5ff] transition flex items-center justify-center gap-2">
                           <FileText className="w-3.5 h-3.5" /> Download Current CV
                         </button>
                       )}
@@ -1180,27 +1180,27 @@ export default function StudentDashboard() {
       {/* ================= MODAL: APPLY TO SUPERVISOR ================= */}
       {applyModalOpen && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-[#04181c] border border-[#0d343c] w-full max-w-lg rounded-2xl p-6 relative space-y-4">
+          <div className="bg-white border border-[#d5e5e3] w-full max-w-lg rounded-2xl p-6 relative space-y-4">
             <button 
               onClick={() => setApplyModalOpen(false)}
-              className="absolute top-4 right-4 text-[#7f9ca4] hover:text-white"
+              className="absolute top-4 right-4 text-[#4a6b72] hover:text-[#061d21]"
             >
               <X className="w-5 h-5" />
             </button>
 
-            <h3 className="text-lg font-bold text-white font-serif">Apply for Research Project</h3>
-            <p className="text-xs text-[#7f9ca4]">Project Topic: <span className="text-[#00e5ff] font-semibold">{targetProjectTitle}</span></p>
+            <h3 className="text-lg font-bold text-[#061d21] font-serif">Apply for Research Project</h3>
+            <p className="text-xs text-[#4a6b72]">Project Topic: <span className="text-[#00e5ff] font-semibold">{targetProjectTitle}</span></p>
 
             <form onSubmit={handleSendApplication} className="space-y-4">
               <div>
-                <label className="block text-xs font-mono text-[#7f9ca4] mb-1">Research Pitch & Cover Statement</label>
+                <label className="block text-xs font-mono text-[#4a6b72] mb-1">Research Pitch & Cover Statement</label>
                 <textarea 
                   required 
                   rows={4}
                   value={pitchMessage}
                   onChange={(e) => setPitchMessage(e.target.value)}
                   placeholder="Explain why your academic background and skills make you a strong fit for this supervisor..."
-                  className="w-full bg-[#020d0f] border border-[#0d343c] focus:border-[#00e5ff] p-3 text-xs rounded-lg text-white outline-none resize-none"
+                  className="w-full bg-[#eff6f5] border border-[#d5e5e3] focus:border-[#00e5ff] p-3 text-xs rounded-lg text-[#061d21] outline-none resize-none"
                 />
               </div>
 
@@ -1208,7 +1208,7 @@ export default function StudentDashboard() {
                 <button 
                   type="button" 
                   onClick={() => setApplyModalOpen(false)}
-                  className="px-4 py-2 bg-[#020d0f] border border-[#0d343c] text-[#7f9ca4] text-xs font-semibold rounded-lg hover:text-white"
+                  className="px-4 py-2 bg-[#eff6f5] border border-[#d5e5e3] text-[#4a6b72] text-xs font-semibold rounded-lg hover:text-[#061d21]"
                 >
                   Cancel
                 </button>

@@ -96,17 +96,17 @@ export default function ResearcherDashboard() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#031114] text-[#e2f1f4] flex flex-col md:flex-row font-sans selection:bg-[#00e5ff] selection:text-[#031114]">
+    <div className="min-h-screen bg-[#f4f8f7] text-[#061d21] flex flex-col md:flex-row font-sans selection:bg-[#00e5ff] selection:text-[#031114]">
       
       {/* MOBILE TOP BAR */}
-      <div className="md:hidden bg-[#04181c] border-b border-[#0d343c] px-4 py-3 flex items-center justify-between sticky top-0 z-50">
+      <div className="md:hidden bg-white border-b border-[#d5e5e3] px-4 py-3 flex items-center justify-between sticky top-0 z-50">
         <div className="flex items-center gap-3">
           <Image src="/logo.png" alt="ResearchNest" width={32} height={32} style={{ width: 'auto', height: 'auto' }} className="object-contain" />
-          <span className="font-bold text-white tracking-tight">ResearchNest</span>
+          <span className="font-bold text-[#061d21] tracking-tight">ResearchNest</span>
         </div>
         <button 
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="p-2 text-[#7f9ca4] hover:text-white rounded-lg bg-[#031114] border border-[#0d343c]"
+          className="p-2 text-[#4a6b72] hover:text-[#061d21] rounded-lg bg-[#f4f8f7] border border-[#d5e5e3]"
         >
           {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
@@ -114,15 +114,15 @@ export default function ResearcherDashboard() {
 
       {/* SIDEBAR NAVIGATION */}
       <aside className={`
-        fixed md:static inset-y-0 left-0 z-40 w-64 bg-[#04181c] border-r border-[#0d343c] flex flex-col justify-between transition-transform duration-300 ease-in-out
+        fixed md:static inset-y-0 left-0 z-40 w-64 bg-white border-r border-[#d5e5e3] flex flex-col justify-between transition-transform duration-300 ease-in-out
         ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
       `}>
         <div>
           {/* Logo Brand */}
-          <div className="hidden md:flex items-center gap-3 px-6 py-6 border-b border-[#0d343c]">
+          <div className="hidden md:flex items-center gap-3 px-6 py-6 border-b border-[#d5e5e3]">
             <Image src="/logo.png" alt="ResearchNest" width={36} height={36} style={{ width: 'auto', height: 'auto' }} className="object-contain" />
             <div>
-              <span className="font-bold text-white tracking-tight text-lg block leading-none">ResearchNest</span>
+              <span className="font-bold text-[#061d21] tracking-tight text-lg block leading-none">ResearchNest</span>
               <span className="text-[10px] text-[#00e5ff] font-mono tracking-wider uppercase">Researcher Portal</span>
             </div>
           </div>
@@ -142,10 +142,10 @@ export default function ResearcherDashboard() {
                   className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
                     isActive
                       ? 'bg-[#00e5ff]/10 text-[#00e5ff] border border-[#00e5ff]/30 shadow-[0_0_15px_rgba(0,229,255,0.1)]'
-                      : 'text-[#7f9ca4] hover:bg-[#0a272d] hover:text-white'
+                      : 'text-[#4a6b72] hover:bg-[#0a272d] hover:text-[#061d21]'
                   }`}
                 >
-                  <Icon className={`w-5 h-5 ${isActive ? 'text-[#00e5ff]' : 'text-[#7f9ca4]'}`} />
+                  <Icon className={`w-5 h-5 ${isActive ? 'text-[#00e5ff]' : 'text-[#4a6b72]'}`} />
                   <span>{item.label}</span>
                 </button>
               );
@@ -163,12 +163,12 @@ export default function ResearcherDashboard() {
       <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
         
         {/* HEADER BAR */}
-        <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 mb-6 border-b border-[#0d343c]">
+        <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 mb-6 border-b border-[#d5e5e3]">
           <div>
-            <h1 className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-tight capitalize">
+            <h1 className="text-2xl sm:text-3xl font-serif font-bold text-[#061d21] tracking-tight capitalize">
               {activeTab.replace('-', ' ')}
             </h1>
-            <p className="text-xs sm:text-sm text-[#7f9ca4] mt-1">
+            <p className="text-xs sm:text-sm text-[#4a6b72] mt-1">
               Independent Research Workspace & Governance Panel
             </p>
           </div>
@@ -197,12 +197,12 @@ export default function ResearcherDashboard() {
               ].map((stat, i) => {
                 const Icon = stat.icon;
                 return (
-                  <div key={i} className="bg-[#04181c] border border-[#0d343c] p-5 rounded-xl flex items-center justify-between">
+                  <div key={i} className="bg-white border border-[#d5e5e3] p-5 rounded-xl flex items-center justify-between">
                     <div>
-                      <p className="text-xs text-[#7f9ca4] font-mono uppercase">{stat.title}</p>
-                      <p className="text-2xl font-bold text-white mt-1">{stat.value}</p>
+                      <p className="text-xs text-[#4a6b72] font-mono uppercase">{stat.title}</p>
+                      <p className="text-2xl font-bold text-[#061d21] mt-1">{stat.value}</p>
                     </div>
-                    <div className={`p-3 rounded-lg bg-[#031114] border border-[#0d343c] ${stat.color}`}>
+                    <div className={`p-3 rounded-lg bg-[#f4f8f7] border border-[#d5e5e3] ${stat.color}`}>
                       <Icon className="w-6 h-6" />
                     </div>
                   </div>
@@ -212,9 +212,9 @@ export default function ResearcherDashboard() {
 
             {/* Recent Activity & Highlights */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              <div className="lg:col-span-2 bg-[#04181c] border border-[#0d343c] rounded-xl p-6">
+              <div className="lg:col-span-2 bg-white border border-[#d5e5e3] rounded-xl p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+                  <h3 className="text-lg font-semibold text-[#061d21] flex items-center gap-2">
                     <FolderPlus className="w-5 h-5 text-[#00e5ff]" />
                     <span>My Active Research Projects</span>
                   </h3>
@@ -222,10 +222,10 @@ export default function ResearcherDashboard() {
                 </div>
                 <div className="space-y-3">
                   {myProjects.map((p) => (
-                    <div key={p.id} className="p-4 bg-[#031114] border border-[#0d343c] rounded-lg flex items-center justify-between">
+                    <div key={p.id} className="p-4 bg-[#f4f8f7] border border-[#d5e5e3] rounded-lg flex items-center justify-between">
                       <div>
-                        <h4 className="font-semibold text-white text-sm">{p.title}</h4>
-                        <span className="text-xs text-[#7f9ca4]">{p.category} • {p.applicants} Candidates pending</span>
+                        <h4 className="font-semibold text-[#061d21] text-sm">{p.title}</h4>
+                        <span className="text-xs text-[#4a6b72]">{p.category} • {p.applicants} Candidates pending</span>
                       </div>
                       <span className="px-2.5 py-1 text-[10px] font-mono rounded-full bg-[#00e5ff]/10 text-[#00e5ff] border border-[#00e5ff]/30">
                         {p.status}
@@ -236,21 +236,21 @@ export default function ResearcherDashboard() {
               </div>
 
               {/* Action Board */}
-              <div className="bg-[#04181c] border border-[#0d343c] rounded-xl p-6 flex flex-col justify-between">
+              <div className="bg-white border border-[#d5e5e3] rounded-xl p-6 flex flex-col justify-between">
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                  <h3 className="text-lg font-semibold text-[#061d21] mb-4 flex items-center gap-2">
                     <Sparkles className="w-5 h-5 text-[#00e5ff]" />
                     <span>Quick Creation Hub</span>
                   </h3>
-                  <p className="text-xs text-[#7f9ca4] mb-4">
+                  <p className="text-xs text-[#4a6b72] mb-4">
                     As an Independent Researcher, you hold creation privileges across peer projects, custom courses, and open labs.
                   </p>
                   <div className="space-y-2.5">
-                    <button onClick={() => setIsCreateCourseOpen(true)} className="w-full text-left p-3 rounded-lg bg-[#031114] border border-[#0d343c] text-xs font-semibold text-white hover:border-[#00e5ff] transition flex items-center justify-between">
+                    <button onClick={() => setIsCreateCourseOpen(true)} className="w-full text-left p-3 rounded-lg bg-[#f4f8f7] border border-[#d5e5e3] text-xs font-semibold text-[#061d21] hover:border-[#00e5ff] transition flex items-center justify-between">
                       <span>Create New Course</span>
                       <BookOpen className="w-4 h-4 text-[#00e5ff]" />
                     </button>
-                    <button onClick={() => setIsCreateGroupOpen(true)} className="w-full text-left p-3 rounded-lg bg-[#031114] border border-[#0d343c] text-xs font-semibold text-white hover:border-[#00e5ff] transition flex items-center justify-between">
+                    <button onClick={() => setIsCreateGroupOpen(true)} className="w-full text-left p-3 rounded-lg bg-[#f4f8f7] border border-[#d5e5e3] text-xs font-semibold text-[#061d21] hover:border-[#00e5ff] transition flex items-center justify-between">
                       <span>Establish Research Group</span>
                       <Users className="w-4 h-4 text-[#00e5ff]" />
                     </button>
@@ -263,14 +263,14 @@ export default function ResearcherDashboard() {
 
         {/* VIEW 2: PROFILE (EDIT & VIEW) */}
         {activeTab === 'profile' && (
-          <div className="bg-[#04181c] border border-[#0d343c] rounded-xl p-6 max-w-4xl">
-            <div className="flex items-center justify-between pb-6 mb-6 border-b border-[#0d343c]">
+          <div className="bg-white border border-[#d5e5e3] rounded-xl p-6 max-w-4xl">
+            <div className="flex items-center justify-between pb-6 mb-6 border-b border-[#d5e5e3]">
               <div className="flex items-center gap-4">
                 <div className="w-16 h-16 rounded-full bg-[#00e5ff]/20 border border-[#00e5ff] flex items-center justify-center text-2xl font-bold text-[#00e5ff]">
                   {profile.fullName.charAt(0)}
                 </div>
                 <div>
-                  <h2 className="text-xl font-bold text-white">{profile.fullName}</h2>
+                  <h2 className="text-xl font-bold text-[#061d21]">{profile.fullName}</h2>
                   <p className="text-xs text-[#00e5ff] font-mono">{profile.role}</p>
                 </div>
               </div>
@@ -287,21 +287,21 @@ export default function ResearcherDashboard() {
               <form onSubmit={(e) => { e.preventDefault(); setIsEditingProfile(false); }} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs text-[#7f9ca4] mb-1">Full Name</label>
-                    <input type="text" value={profile.fullName} onChange={(e) => setProfile({...profile, fullName: e.target.value})} className="w-full px-4 py-2.5 rounded-lg bg-[#031114] border border-[#0d343c] text-white text-sm focus:border-[#00e5ff] outline-none" />
+                    <label className="block text-xs text-[#4a6b72] mb-1">Full Name</label>
+                    <input type="text" value={profile.fullName} onChange={(e) => setProfile({...profile, fullName: e.target.value})} className="w-full px-4 py-2.5 rounded-lg bg-[#f4f8f7] border border-[#d5e5e3] text-[#061d21] text-sm focus:border-[#00e5ff] outline-none" />
                   </div>
                   <div>
-                    <label className="block text-xs text-[#7f9ca4] mb-1">Organization / Lab</label>
-                    <input type="text" value={profile.organization} onChange={(e) => setProfile({...profile, organization: e.target.value})} className="w-full px-4 py-2.5 rounded-lg bg-[#031114] border border-[#0d343c] text-white text-sm focus:border-[#00e5ff] outline-none" />
+                    <label className="block text-xs text-[#4a6b72] mb-1">Organization / Lab</label>
+                    <input type="text" value={profile.organization} onChange={(e) => setProfile({...profile, organization: e.target.value})} className="w-full px-4 py-2.5 rounded-lg bg-[#f4f8f7] border border-[#d5e5e3] text-[#061d21] text-sm focus:border-[#00e5ff] outline-none" />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-xs text-[#7f9ca4] mb-1">Research Interests</label>
-                  <input type="text" value={profile.interests} onChange={(e) => setProfile({...profile, interests: e.target.value})} className="w-full px-4 py-2.5 rounded-lg bg-[#031114] border border-[#0d343c] text-white text-sm focus:border-[#00e5ff] outline-none" />
+                  <label className="block text-xs text-[#4a6b72] mb-1">Research Interests</label>
+                  <input type="text" value={profile.interests} onChange={(e) => setProfile({...profile, interests: e.target.value})} className="w-full px-4 py-2.5 rounded-lg bg-[#f4f8f7] border border-[#d5e5e3] text-[#061d21] text-sm focus:border-[#00e5ff] outline-none" />
                 </div>
                 <div>
-                  <label className="block text-xs text-[#7f9ca4] mb-1">Bio / Overview</label>
-                  <textarea rows={4} value={profile.bio} onChange={(e) => setProfile({...profile, bio: e.target.value})} className="w-full px-4 py-2.5 rounded-lg bg-[#031114] border border-[#0d343c] text-white text-sm focus:border-[#00e5ff] outline-none" />
+                  <label className="block text-xs text-[#4a6b72] mb-1">Bio / Overview</label>
+                  <textarea rows={4} value={profile.bio} onChange={(e) => setProfile({...profile, bio: e.target.value})} className="w-full px-4 py-2.5 rounded-lg bg-[#f4f8f7] border border-[#d5e5e3] text-[#061d21] text-sm focus:border-[#00e5ff] outline-none" />
                 </div>
                 <button type="submit" className="px-5 py-2.5 bg-[#00e5ff] text-[#031114] font-semibold text-xs rounded-lg hover:bg-[#33ebff] transition">
                   Save Changes
@@ -310,16 +310,16 @@ export default function ResearcherDashboard() {
             ) : (
               <div className="space-y-6 text-sm">
                 <div>
-                  <h4 className="text-xs font-mono uppercase text-[#7f9ca4] mb-1">Affiliation</h4>
-                  <p className="text-white font-medium">{profile.organization}</p>
+                  <h4 className="text-xs font-mono uppercase text-[#4a6b72] mb-1">Affiliation</h4>
+                  <p className="text-[#061d21] font-medium">{profile.organization}</p>
                 </div>
                 <div>
-                  <h4 className="text-xs font-mono uppercase text-[#7f9ca4] mb-1">Specializations</h4>
+                  <h4 className="text-xs font-mono uppercase text-[#4a6b72] mb-1">Specializations</h4>
                   <p className="text-[#00e5ff] font-medium">{profile.interests}</p>
                 </div>
                 <div>
-                  <h4 className="text-xs font-mono uppercase text-[#7f9ca4] mb-1">Biography</h4>
-                  <p className="text-[#e2f1f4] leading-relaxed">{profile.bio}</p>
+                  <h4 className="text-xs font-mono uppercase text-[#4a6b72] mb-1">Biography</h4>
+                  <p className="text-[#061d21] leading-relaxed">{profile.bio}</p>
                 </div>
               </div>
             )}
@@ -330,17 +330,17 @@ export default function ResearcherDashboard() {
         {activeTab === 'projects' && (
           <div className="space-y-8">
             {/* Open Projects Feed */}
-            <div className="bg-[#04181c] border border-[#0d343c] rounded-xl p-6">
-              <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+            <div className="bg-white border border-[#d5e5e3] rounded-xl p-6">
+              <h3 className="text-lg font-semibold text-[#061d21] mb-4 flex items-center gap-2">
                 <Globe className="w-5 h-5 text-[#00e5ff]" />
                 <span>Apply for Collaborative Projects</span>
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {availableProjects.map((p) => (
-                  <div key={p.id} className="p-5 bg-[#031114] border border-[#0d343c] rounded-xl flex flex-col justify-between space-y-4">
+                  <div key={p.id} className="p-5 bg-[#f4f8f7] border border-[#d5e5e3] rounded-xl flex flex-col justify-between space-y-4">
                     <div>
-                      <h4 className="font-bold text-white text-base">{p.title}</h4>
-                      <p className="text-xs text-[#7f9ca4] mt-1">Lead: {p.lead} • Deadline: {p.deadline}</p>
+                      <h4 className="font-bold text-[#061d21] text-base">{p.title}</h4>
+                      <p className="text-xs text-[#4a6b72] mt-1">Lead: {p.lead} • Deadline: {p.deadline}</p>
                       <div className="flex gap-2 mt-3">
                         {p.tags.map((t, i) => (
                           <span key={i} className="text-[10px] px-2 py-0.5 rounded bg-[#0d343c] text-[#00e5ff] font-mono">{t}</span>
@@ -359,20 +359,20 @@ export default function ResearcherDashboard() {
 
         {/* VIEW 4: APPLICATIONS REVIEW */}
         {activeTab === 'applications' && (
-          <div className="bg-[#04181c] border border-[#0d343c] rounded-xl p-6">
-            <h3 className="text-lg font-semibold text-white mb-4">Pending Candidate Applications</h3>
+          <div className="bg-white border border-[#d5e5e3] rounded-xl p-6">
+            <h3 className="text-lg font-semibold text-[#061d21] mb-4">Pending Candidate Applications</h3>
             <div className="space-y-3">
               {applications.map((app) => (
-                <div key={app.id} className="p-4 bg-[#031114] border border-[#0d343c] rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div key={app.id} className="p-4 bg-[#f4f8f7] border border-[#d5e5e3] rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div>
-                    <h4 className="font-semibold text-white">{app.applicantName}</h4>
-                    <p className="text-xs text-[#7f9ca4]">{app.role} — Applying for <span className="text-[#00e5ff]">{app.projectTitle}</span></p>
+                    <h4 className="font-semibold text-[#061d21]">{app.applicantName}</h4>
+                    <p className="text-xs text-[#4a6b72]">{app.role} — Applying for <span className="text-[#00e5ff]">{app.projectTitle}</span></p>
                   </div>
                   <div className="flex items-center gap-2">
-                    <button onClick={() => alert('Accepted')} className="px-3 py-1.5 bg-emerald-950/50 border border-emerald-800 text-emerald-400 hover:bg-emerald-800 hover:text-white rounded text-xs font-semibold flex items-center gap-1 transition">
+                    <button onClick={() => alert('Accepted')} className="px-3 py-1.5 bg-emerald-950/50 border border-emerald-800 text-emerald-400 hover:bg-emerald-800 hover:text-[#061d21] rounded text-xs font-semibold flex items-center gap-1 transition">
                       <Check className="w-3.5 h-3.5" /> Accept
                     </button>
-                    <button onClick={() => alert('Rejected')} className="px-3 py-1.5 bg-red-950/50 border border-red-800 text-red-400 hover:bg-red-800 hover:text-white rounded text-xs font-semibold flex items-center gap-1 transition">
+                    <button onClick={() => alert('Rejected')} className="px-3 py-1.5 bg-red-950/50 border border-red-800 text-red-400 hover:bg-red-800 hover:text-[#061d21] rounded text-xs font-semibold flex items-center gap-1 transition">
                       <XCircle className="w-3.5 h-3.5" /> Reject
                     </button>
                   </div>
@@ -384,18 +384,18 @@ export default function ResearcherDashboard() {
 
         {/* VIEW 5: COURSES */}
         {activeTab === 'courses' && (
-          <div className="bg-[#04181c] border border-[#0d343c] rounded-xl p-6">
+          <div className="bg-white border border-[#d5e5e3] rounded-xl p-6">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-lg font-semibold text-white">Your Courses & Workshops</h3>
+              <h3 className="text-lg font-semibold text-[#061d21]">Your Courses & Workshops</h3>
               <button onClick={() => setIsCreateCourseOpen(true)} className="px-3.5 py-2 bg-[#00e5ff] text-[#031114] text-xs font-semibold rounded-lg hover:bg-[#33ebff]">
                 + Create Course
               </button>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {courses.map((c) => (
-                <div key={c.id} className="p-5 bg-[#031114] border border-[#0d343c] rounded-xl">
-                  <h4 className="font-bold text-white text-base">{c.title}</h4>
-                  <p className="text-xs text-[#7f9ca4] mt-2">{c.enrolled} Enrolled Researchers • {c.modules} Curriculum Modules</p>
+                <div key={c.id} className="p-5 bg-[#f4f8f7] border border-[#d5e5e3] rounded-xl">
+                  <h4 className="font-bold text-[#061d21] text-base">{c.title}</h4>
+                  <p className="text-xs text-[#4a6b72] mt-2">{c.enrolled} Enrolled Researchers • {c.modules} Curriculum Modules</p>
                 </div>
               ))}
             </div>
@@ -404,19 +404,19 @@ export default function ResearcherDashboard() {
 
         {/* VIEW 6: GROUPS */}
         {activeTab === 'groups' && (
-          <div className="bg-[#04181c] border border-[#0d343c] rounded-xl p-6">
+          <div className="bg-white border border-[#d5e5e3] rounded-xl p-6">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-lg font-semibold text-white">Research Groups & Labs</h3>
+              <h3 className="text-lg font-semibold text-[#061d21]">Research Groups & Labs</h3>
               <button onClick={() => setIsCreateGroupOpen(true)} className="px-3.5 py-2 bg-[#00e5ff] text-[#031114] text-xs font-semibold rounded-lg hover:bg-[#33ebff]">
                 + Create Group
               </button>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {groups.map((g) => (
-                <div key={g.id} className="p-5 bg-[#031114] border border-[#0d343c] rounded-xl">
-                  <h4 className="font-bold text-white text-base">{g.name}</h4>
+                <div key={g.id} className="p-5 bg-[#f4f8f7] border border-[#d5e5e3] rounded-xl">
+                  <h4 className="font-bold text-[#061d21] text-base">{g.name}</h4>
                   <p className="text-xs text-[#00e5ff] font-mono mt-1">{g.topic}</p>
-                  <p className="text-xs text-[#7f9ca4] mt-2">{g.members} Active Members</p>
+                  <p className="text-xs text-[#4a6b72] mt-2">{g.members} Active Members</p>
                 </div>
               ))}
             </div>
@@ -425,8 +425,8 @@ export default function ResearcherDashboard() {
 
         {/* VIEW 7: CHAT */}
         {activeTab === 'chat' && (
-          <div className="bg-[#04181c] border border-[#0d343c] rounded-xl h-600px flex flex-col">
-            <div className="p-4 border-b border-[#0d343c] font-semibold text-white flex items-center gap-2">
+          <div className="bg-white border border-[#d5e5e3] rounded-xl h-600px flex flex-col">
+            <div className="p-4 border-b border-[#d5e5e3] font-semibold text-[#061d21] flex items-center gap-2">
               <MessageSquare className="w-5 h-5 text-[#00e5ff]" />
               <span>Peer Communication & Collaboration Channel</span>
             </div>
@@ -437,13 +437,13 @@ export default function ResearcherDashboard() {
                 <div key={idx} className={`flex flex-col ${msg.sender === 'You' ? 'items-end' : 'items-start'}`}>
                   <div className={`max-w-md p-3 rounded-xl text-xs sm:text-sm ${
                     msg.sender === 'You' 
-                      ? 'bg-[#00e5ff]/20 border border-[#00e5ff]/40 text-white rounded-br-none' 
-                      : 'bg-[#031114] border border-[#0d343c] text-[#e2f1f4] rounded-bl-none'
+                      ? 'bg-[#00e5ff]/20 border border-[#00e5ff]/40 text-[#061d21] rounded-br-none' 
+                      : 'bg-[#f4f8f7] border border-[#d5e5e3] text-[#061d21] rounded-bl-none'
                   }`}>
                     <p className="font-bold text-[10px] text-[#00e5ff] mb-1">{msg.sender}</p>
                     <p>{msg.text}</p>
                   </div>
-                  <span className="text-[10px] text-[#7f9ca4] mt-1">{msg.time}</span>
+                  <span className="text-[10px] text-[#4a6b72] mt-1">{msg.time}</span>
                 </div>
               ))}
             </div>
@@ -456,14 +456,14 @@ export default function ResearcherDashboard() {
                 setChatMessages([...chatMessages, { sender: 'You', text: newMessage, time: 'Just now' }]);
                 setNewMessage('');
               }}
-              className="p-3 border-t border-[#0d343c] flex gap-2"
+              className="p-3 border-t border-[#d5e5e3] flex gap-2"
             >
               <input
                 type="text"
                 placeholder="Type your message..."
                 value={newMessage}
                 onChange={(e) => setNewMessage(e.target.value)}
-                className="flex-1 bg-[#031114] border border-[#0d343c] rounded-lg px-4 py-2 text-xs text-white focus:outline-none focus:border-[#00e5ff]"
+                className="flex-1 bg-[#f4f8f7] border border-[#d5e5e3] rounded-lg px-4 py-2 text-xs text-[#061d21] focus:outline-none focus:border-[#00e5ff]"
               />
               <button type="submit" className="px-4 py-2 bg-[#00e5ff] text-[#031114] font-semibold text-xs rounded-lg hover:bg-[#33ebff]">
                 <Send className="w-4 h-4" />
@@ -477,23 +477,23 @@ export default function ResearcherDashboard() {
       {/* MODAL: CREATE PROJECT */}
       {isCreateProjectOpen && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#04181c] border border-[#0d343c] w-full max-w-md rounded-xl p-6 relative">
-            <button onClick={() => setIsCreateProjectOpen(false)} className="absolute top-4 right-4 text-[#7f9ca4] hover:text-white">
+          <div className="bg-white border border-[#d5e5e3] w-full max-w-md rounded-xl p-6 relative">
+            <button onClick={() => setIsCreateProjectOpen(false)} className="absolute top-4 right-4 text-[#4a6b72] hover:text-[#061d21]">
               <X className="w-5 h-5" />
             </button>
-            <h3 className="text-lg font-bold text-white mb-4">Create Research Project</h3>
+            <h3 className="text-lg font-bold text-[#061d21] mb-4">Create Research Project</h3>
             <form onSubmit={(e) => {
               e.preventDefault();
               setMyProjects([...myProjects, { id: Date.now().toString(), title: 'New Peer Project', category: 'General', applicants: 0, status: 'Active' }]);
               setIsCreateProjectOpen(false);
             }} className="space-y-4">
               <div>
-                <label className="block text-xs text-[#7f9ca4] mb-1">Project Title</label>
-                <input required type="text" placeholder="e.g. Sub-Zero Thermal Analysis" className="w-full px-3 py-2 bg-[#031114] border border-[#0d343c] text-white rounded text-xs focus:border-[#00e5ff] outline-none" />
+                <label className="block text-xs text-[#4a6b72] mb-1">Project Title</label>
+                <input required type="text" placeholder="e.g. Sub-Zero Thermal Analysis" className="w-full px-3 py-2 bg-[#f4f8f7] border border-[#d5e5e3] text-[#061d21] rounded text-xs focus:border-[#00e5ff] outline-none" />
               </div>
               <div>
-                <label className="block text-xs text-[#7f9ca4] mb-1">Category / Domain</label>
-                <input required type="text" placeholder="e.g. Physics, ML" className="w-full px-3 py-2 bg-[#031114] border border-[#0d343c] text-white rounded text-xs focus:border-[#00e5ff] outline-none" />
+                <label className="block text-xs text-[#4a6b72] mb-1">Category / Domain</label>
+                <input required type="text" placeholder="e.g. Physics, ML" className="w-full px-3 py-2 bg-[#f4f8f7] border border-[#d5e5e3] text-[#061d21] rounded text-xs focus:border-[#00e5ff] outline-none" />
               </div>
               <button type="submit" className="w-full py-2.5 bg-[#00e5ff] text-[#031114] font-semibold text-xs rounded-lg hover:bg-[#33ebff]">
                 Publish Project
@@ -506,19 +506,19 @@ export default function ResearcherDashboard() {
       {/* MODAL: CREATE COURSE */}
       {isCreateCourseOpen && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#04181c] border border-[#0d343c] w-full max-w-md rounded-xl p-6 relative">
-            <button onClick={() => setIsCreateCourseOpen(false)} className="absolute top-4 right-4 text-[#7f9ca4] hover:text-white">
+          <div className="bg-white border border-[#d5e5e3] w-full max-w-md rounded-xl p-6 relative">
+            <button onClick={() => setIsCreateCourseOpen(false)} className="absolute top-4 right-4 text-[#4a6b72] hover:text-[#061d21]">
               <X className="w-5 h-5" />
             </button>
-            <h3 className="text-lg font-bold text-white mb-4">Create Academic Course</h3>
+            <h3 className="text-lg font-bold text-[#061d21] mb-4">Create Academic Course</h3>
             <form onSubmit={(e) => {
               e.preventDefault();
               setCourses([...courses, { id: Date.now().toString(), title: 'Advanced Computational Methods', enrolled: 0, modules: 6 }]);
               setIsCreateCourseOpen(false);
             }} className="space-y-4">
               <div>
-                <label className="block text-xs text-[#7f9ca4] mb-1">Course Title</label>
-                <input required type="text" placeholder="e.g. Advanced Photonics" className="w-full px-3 py-2 bg-[#031114] border border-[#0d343c] text-white rounded text-xs focus:border-[#00e5ff] outline-none" />
+                <label className="block text-xs text-[#4a6b72] mb-1">Course Title</label>
+                <input required type="text" placeholder="e.g. Advanced Photonics" className="w-full px-3 py-2 bg-[#f4f8f7] border border-[#d5e5e3] text-[#061d21] rounded text-xs focus:border-[#00e5ff] outline-none" />
               </div>
               <button type="submit" className="w-full py-2.5 bg-[#00e5ff] text-[#031114] font-semibold text-xs rounded-lg hover:bg-[#33ebff]">
                 Launch Course
@@ -531,19 +531,19 @@ export default function ResearcherDashboard() {
       {/* MODAL: CREATE GROUP */}
       {isCreateGroupOpen && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#04181c] border border-[#0d343c] w-full max-w-md rounded-xl p-6 relative">
-            <button onClick={() => setIsCreateGroupOpen(false)} className="absolute top-4 right-4 text-[#7f9ca4] hover:text-white">
+          <div className="bg-white border border-[#d5e5e3] w-full max-w-md rounded-xl p-6 relative">
+            <button onClick={() => setIsCreateGroupOpen(false)} className="absolute top-4 right-4 text-[#4a6b72] hover:text-[#061d21]">
               <X className="w-5 h-5" />
             </button>
-            <h3 className="text-lg font-bold text-white mb-4">Establish Research Group</h3>
+            <h3 className="text-lg font-bold text-[#061d21] mb-4">Establish Research Group</h3>
             <form onSubmit={(e) => {
               e.preventDefault();
               setGroups([...groups, { id: Date.now().toString(), name: 'Quantum Optics Collective', members: 1, topic: 'Optics' }]);
               setIsCreateGroupOpen(false);
             }} className="space-y-4">
               <div>
-                <label className="block text-xs text-[#7f9ca4] mb-1">Group / Lab Name</label>
-                <input required type="text" placeholder="e.g. Neural Dynamics Group" className="w-full px-3 py-2 bg-[#031114] border border-[#0d343c] text-white rounded text-xs focus:border-[#00e5ff] outline-none" />
+                <label className="block text-xs text-[#4a6b72] mb-1">Group / Lab Name</label>
+                <input required type="text" placeholder="e.g. Neural Dynamics Group" className="w-full px-3 py-2 bg-[#f4f8f7] border border-[#d5e5e3] text-[#061d21] rounded text-xs focus:border-[#00e5ff] outline-none" />
               </div>
               <button type="submit" className="w-full py-2.5 bg-[#00e5ff] text-[#031114] font-semibold text-xs rounded-lg hover:bg-[#33ebff]">
                 Form Group

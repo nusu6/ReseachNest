@@ -124,17 +124,17 @@ export default function AdminDashboard() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#031114] text-[#e2f1f4] flex flex-col md:flex-row font-sans">
+    <div className="min-h-screen bg-[#f4f8f7] text-[#061d21] flex flex-col md:flex-row font-sans">
       
       {/* MOBILE BAR */}
-      <div className="md:hidden bg-[#04181c] border-b border-[#0d343c] px-4 py-3 flex items-center justify-between sticky top-0 z-50">
+      <div className="md:hidden bg-white border-b border-[#d5e5e3] px-4 py-3 flex items-center justify-between sticky top-0 z-50">
         <div className="flex items-center gap-3">
           <Image src="/logo.png" alt="ResearchNest" width={32} height={32} style={{ width: '32px', height: '32px' }} priority />
-          <span className="font-bold text-white tracking-tight">Admin Console</span>
+          <span className="font-bold text-[#061d21] tracking-tight">Admin Console</span>
         </div>
         <button 
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="p-2 text-[#7f9ca4] hover:text-white rounded-lg bg-[#031114] border border-[#0d343c]"
+          className="p-2 text-[#4a6b72] hover:text-[#061d21] rounded-lg bg-[#f4f8f7] border border-[#d5e5e3]"
         >
           {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
@@ -142,14 +142,14 @@ export default function AdminDashboard() {
 
       {/* SIDEBAR */}
       <aside className={`
-        fixed md:static inset-y-0 left-0 z-40 w-64 bg-[#04181c] border-r border-[#0d343c] flex flex-col justify-between transition-transform duration-300
+        fixed md:static inset-y-0 left-0 z-40 w-64 bg-white border-r border-[#d5e5e3] flex flex-col justify-between transition-transform duration-300
         ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
       `}>
         <div>
-          <div className="hidden md:flex items-center gap-3 px-6 py-6 border-b border-[#0d343c]">
+          <div className="hidden md:flex items-center gap-3 px-6 py-6 border-b border-[#d5e5e3]">
             <Image src="/logo.png" alt="ResearchNest" width={36} height={36} style={{ width: '36px', height: '36px' }} priority />
             <div>
-              <span className="font-bold text-white tracking-tight text-lg block leading-none">ResearchNest</span>
+              <span className="font-bold text-[#061d21] tracking-tight text-lg block leading-none">ResearchNest</span>
               <span className="text-[10px] text-red-400 font-mono tracking-wider uppercase flex items-center gap-1 mt-1">
                 <ShieldCheck className="w-3 h-3 text-red-400" /> Admin Console
               </span>
@@ -170,10 +170,10 @@ export default function AdminDashboard() {
                   className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition ${
                     isActive
                       ? 'bg-[#00e5ff]/10 text-[#00e5ff] border border-[#00e5ff]/30'
-                      : 'text-[#7f9ca4] hover:bg-[#0a272d] hover:text-white'
+                      : 'text-[#4a6b72] hover:bg-[#0a272d] hover:text-[#061d21]'
                   }`}
                 >
-                  <Icon className={`w-5 h-5 ${isActive ? 'text-[#00e5ff]' : 'text-[#7f9ca4]'}`} />
+                  <Icon className={`w-5 h-5 ${isActive ? 'text-[#00e5ff]' : 'text-[#4a6b72]'}`} />
                   <span>{item.label}</span>
                 </button>
               );
@@ -181,14 +181,14 @@ export default function AdminDashboard() {
           </nav>
         </div>
 
-        <div className="p-4 border-t border-[#0d343c] bg-[#031114]/50">
+        <div className="p-4 border-t border-[#d5e5e3] bg-[#f4f8f7]/50">
           <div className="flex items-center gap-3 mb-3 px-2">
             <div className="w-9 h-9 rounded-full bg-red-950/80 border border-red-500 flex items-center justify-center font-bold text-red-400">
               {profile.fullName.charAt(0)}
             </div>
             <div className="overflow-hidden">
-              <p className="text-sm font-semibold text-white truncate">{profile.fullName}</p>
-              <p className="text-[10px] text-[#7f9ca4] truncate">{profile.email}</p>
+              <p className="text-sm font-semibold text-[#061d21] truncate">{profile.fullName}</p>
+              <p className="text-[10px] text-[#4a6b72] truncate">{profile.email}</p>
             </div>
           </div>
           <button
@@ -203,12 +203,12 @@ export default function AdminDashboard() {
 
       {/* MAIN CONTENT */}
       <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
-        <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 mb-6 border-b border-[#0d343c]">
+        <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 mb-6 border-b border-[#d5e5e3]">
           <div>
-            <h1 className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-tight capitalize">
+            <h1 className="text-2xl sm:text-3xl font-serif font-bold text-[#061d21] tracking-tight capitalize">
               {activeTab.replace('-', ' ')}
             </h1>
-            <p className="text-xs sm:text-sm text-[#7f9ca4] mt-1">
+            <p className="text-xs sm:text-sm text-[#4a6b72] mt-1">
               Global Platform Governance & Real-time Administration
             </p>
           </div>
@@ -230,12 +230,12 @@ export default function AdminDashboard() {
               ].map((stat, i) => {
                 const Icon = stat.icon;
                 return (
-                  <div key={i} className="bg-[#04181c] border border-[#0d343c] p-5 rounded-xl flex items-center justify-between">
+                  <div key={i} className="bg-white border border-[#d5e5e3] p-5 rounded-xl flex items-center justify-between">
                     <div>
-                      <p className="text-xs text-[#7f9ca4] font-mono uppercase">{stat.title}</p>
-                      <p className="text-2xl font-bold text-white mt-1">{stat.value}</p>
+                      <p className="text-xs text-[#4a6b72] font-mono uppercase">{stat.title}</p>
+                      <p className="text-2xl font-bold text-[#061d21] mt-1">{stat.value}</p>
                     </div>
-                    <div className={`p-3 rounded-lg bg-[#031114] border border-[#0d343c] ${stat.color}`}>
+                    <div className={`p-3 rounded-lg bg-[#f4f8f7] border border-[#d5e5e3] ${stat.color}`}>
                       <Icon className="w-6 h-6" />
                     </div>
                   </div>
@@ -247,11 +247,11 @@ export default function AdminDashboard() {
 
         {/* DATABASE EXPLORER */}
         {activeTab === 'database' && (
-          <div className="bg-[#04181c] border border-[#0d343c] rounded-xl p-6 space-y-6">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-[#0d343c]">
+          <div className="bg-white border border-[#d5e5e3] rounded-xl p-6 space-y-6">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-[#d5e5e3]">
               <div className="flex items-center gap-2">
                 <Database className="w-5 h-5 text-[#00e5ff]" />
-                <h3 className="text-lg font-semibold text-white">PostgreSQL Database Table Viewer</h3>
+                <h3 className="text-lg font-semibold text-[#061d21]">PostgreSQL Database Table Viewer</h3>
               </div>
               <div className="flex gap-2">
                 {(['users', 'projects', 'payments', 'logs'] as const).map((tbl) => (
@@ -261,7 +261,7 @@ export default function AdminDashboard() {
                     className={`px-3 py-1.5 rounded-lg text-xs font-mono capitalize transition ${
                       selectedTable === tbl
                         ? 'bg-[#00e5ff] text-[#031114] font-bold'
-                        : 'bg-[#031114] text-[#7f9ca4] border border-[#0d343c] hover:text-white'
+                        : 'bg-[#f4f8f7] text-[#4a6b72] border border-[#d5e5e3] hover:text-[#061d21]'
                     }`}
                   >
                     {tbl}
@@ -272,34 +272,34 @@ export default function AdminDashboard() {
 
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs">
-                <thead className="bg-[#031114] text-[#7f9ca4] font-mono uppercase">
+                <thead className="bg-[#f4f8f7] text-[#4a6b72] font-mono uppercase">
                   <tr>
-                    <th className="p-3 border-b border-[#0d343c]">Primary ID</th>
-                    <th className="p-3 border-b border-[#0d343c]">Identifier / Email</th>
-                    <th className="p-3 border-b border-[#0d343c]">Role / Type</th>
-                    <th className="p-3 border-b border-[#0d343c]">Date</th>
+                    <th className="p-3 border-b border-[#d5e5e3]">Primary ID</th>
+                    <th className="p-3 border-b border-[#d5e5e3]">Identifier / Email</th>
+                    <th className="p-3 border-b border-[#d5e5e3]">Role / Type</th>
+                    <th className="p-3 border-b border-[#d5e5e3]">Date</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-[#0d343c] font-mono">
                   {selectedTable === 'users' && userList.map((u) => (
-                    <tr key={u.id} className="hover:bg-[#031114]/50">
+                    <tr key={u.id} className="hover:bg-[#f4f8f7]/50">
                       <td className="p-3 text-[#00e5ff]">{u.id}</td>
-                      <td className="p-3 text-white">{u.email}</td>
+                      <td className="p-3 text-[#061d21]">{u.email}</td>
                       <td className="p-3 text-amber-400">{u.role}</td>
-                      <td className="p-3 text-[#7f9ca4]">{u.joined || '2026-03-01'}</td>
+                      <td className="p-3 text-[#4a6b72]">{u.joined || '2026-03-01'}</td>
                     </tr>
                   ))}
                   {selectedTable === 'payments' && transactions.map((t) => (
-                    <tr key={t.id} className="hover:bg-[#031114]/50">
+                    <tr key={t.id} className="hover:bg-[#f4f8f7]/50">
                       <td className="p-3 text-[#00e5ff]">{t.id}</td>
-                      <td className="p-3 text-white">{t.user}</td>
+                      <td className="p-3 text-[#061d21]">{t.user}</td>
                       <td className="p-3 text-emerald-400">{t.amount}</td>
-                      <td className="p-3 text-[#7f9ca4]">{t.date}</td>
+                      <td className="p-3 text-[#4a6b72]">{t.date}</td>
                     </tr>
                   ))}
                   {(selectedTable === 'projects' || selectedTable === 'logs') && (
                     <tr>
-                      <td colSpan={4} className="p-6 text-center text-[#7f9ca4]">
+                      <td colSpan={4} className="p-6 text-center text-[#4a6b72]">
                         No entries recorded for <span className="text-[#00e5ff]">{selectedTable}</span>.
                       </td>
                     </tr>
@@ -312,28 +312,28 @@ export default function AdminDashboard() {
 
         {/* MANAGE USERS */}
         {activeTab === 'users' && (
-          <div className="bg-[#04181c] border border-[#0d343c] rounded-xl p-6 space-y-4">
+          <div className="bg-white border border-[#d5e5e3] rounded-xl p-6 space-y-4">
             <div className="flex justify-between items-center">
-              <h3 className="text-lg font-semibold text-white">Registered Users</h3>
-              <span className="text-xs text-[#7f9ca4] font-mono">{userList.length} Total</span>
+              <h3 className="text-lg font-semibold text-[#061d21]">Registered Users</h3>
+              <span className="text-xs text-[#4a6b72] font-mono">{userList.length} Total</span>
             </div>
 
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs">
-                <thead className="bg-[#031114] text-[#7f9ca4] font-mono uppercase">
+                <thead className="bg-[#f4f8f7] text-[#4a6b72] font-mono uppercase">
                   <tr>
-                    <th className="p-3 border-b border-[#0d343c]">User</th>
-                    <th className="p-3 border-b border-[#0d343c]">Role</th>
-                    <th className="p-3 border-b border-[#0d343c]">Status</th>
-                    <th className="p-3 border-b border-[#0d343c] text-right">Actions</th>
+                    <th className="p-3 border-b border-[#d5e5e3]">User</th>
+                    <th className="p-3 border-b border-[#d5e5e3]">Role</th>
+                    <th className="p-3 border-b border-[#d5e5e3]">Status</th>
+                    <th className="p-3 border-b border-[#d5e5e3] text-right">Actions</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-[#0d343c]">
                   {userList.map((u) => (
-                    <tr key={u.id} className="hover:bg-[#031114]/50">
+                    <tr key={u.id} className="hover:bg-[#f4f8f7]/50">
                       <td className="p-3">
-                        <p className="font-semibold text-white">{u.name || u.fullName || 'User'}</p>
-                        <p className="text-[11px] text-[#7f9ca4]">{u.email}</p>
+                        <p className="font-semibold text-[#061d21]">{u.name || u.fullName || 'User'}</p>
+                        <p className="text-[11px] text-[#4a6b72]">{u.email}</p>
                       </td>
                       <td className="p-3 font-mono text-[#00e5ff]">{u.role}</td>
                       <td className="p-3">
@@ -344,7 +344,7 @@ export default function AdminDashboard() {
                       <td className="p-3 text-right">
                         <button 
                           onClick={() => setUserList(userList.filter(item => item.id !== u.id))}
-                          className="px-2.5 py-1 bg-red-950/40 border border-red-800 text-red-400 hover:bg-red-800 hover:text-white rounded text-[11px]"
+                          className="px-2.5 py-1 bg-red-950/40 border border-red-800 text-red-400 hover:bg-red-800 hover:text-[#061d21] rounded text-[11px]"
                         >
                           Remove
                         </button>
@@ -359,26 +359,26 @@ export default function AdminDashboard() {
 
         {/* PAYMENTS */}
         {activeTab === 'payments' && (
-          <div className="bg-[#04181c] border border-[#0d343c] rounded-xl p-6 space-y-6">
-            <h3 className="text-lg font-semibold text-white">Payment Transactions</h3>
+          <div className="bg-white border border-[#d5e5e3] rounded-xl p-6 space-y-6">
+            <h3 className="text-lg font-semibold text-[#061d21]">Payment Transactions</h3>
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs">
-                <thead className="bg-[#031114] text-[#7f9ca4] font-mono uppercase">
+                <thead className="bg-[#f4f8f7] text-[#4a6b72] font-mono uppercase">
                   <tr>
-                    <th className="p-3 border-b border-[#0d343c]">ID</th>
-                    <th className="p-3 border-b border-[#0d343c]">Payer</th>
-                    <th className="p-3 border-b border-[#0d343c]">Amount</th>
-                    <th className="p-3 border-b border-[#0d343c]">Gateway</th>
-                    <th className="p-3 border-b border-[#0d343c]">Status</th>
+                    <th className="p-3 border-b border-[#d5e5e3]">ID</th>
+                    <th className="p-3 border-b border-[#d5e5e3]">Payer</th>
+                    <th className="p-3 border-b border-[#d5e5e3]">Amount</th>
+                    <th className="p-3 border-b border-[#d5e5e3]">Gateway</th>
+                    <th className="p-3 border-b border-[#d5e5e3]">Status</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-[#0d343c] font-mono">
                   {transactions.map((tx) => (
                     <tr key={tx.id}>
                       <td className="p-3 text-[#00e5ff]">{tx.id}</td>
-                      <td className="p-3 text-white">{tx.user}</td>
+                      <td className="p-3 text-[#061d21]">{tx.user}</td>
                       <td className="p-3 text-emerald-400 font-bold">{tx.amount}</td>
-                      <td className="p-3 text-[#7f9ca4]">{tx.gateway}</td>
+                      <td className="p-3 text-[#4a6b72]">{tx.gateway}</td>
                       <td className="p-3">
                         <span className="px-2 py-0.5 text-[10px] rounded bg-emerald-950/50 text-emerald-400 border border-emerald-800">
                           {tx.status}
@@ -394,21 +394,21 @@ export default function AdminDashboard() {
 
         {/* SYSTEM CONFIG */}
         {activeTab === 'config' && (
-          <div className="bg-[#04181c] border border-[#0d343c] rounded-xl p-6 space-y-6 max-w-3xl">
-            <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+          <div className="bg-white border border-[#d5e5e3] rounded-xl p-6 space-y-6 max-w-3xl">
+            <h3 className="text-lg font-semibold text-[#061d21] flex items-center gap-2">
               <Sliders className="w-5 h-5 text-[#00e5ff]" />
               <span>Global System Settings</span>
             </h3>
             <div className="space-y-4 text-xs">
-              <div className="flex items-center justify-between p-4 bg-[#031114] rounded-lg border border-[#0d343c]">
+              <div className="flex items-center justify-between p-4 bg-[#f4f8f7] rounded-lg border border-[#d5e5e3]">
                 <div>
-                  <p className="font-semibold text-white">Maintenance Mode</p>
-                  <p className="text-[#7f9ca4] text-[11px]">Restrict public access for maintenance</p>
+                  <p className="font-semibold text-[#061d21]">Maintenance Mode</p>
+                  <p className="text-[#4a6b72] text-[11px]">Restrict public access for maintenance</p>
                 </div>
                 <button 
                   onClick={() => setSysConfig({...sysConfig, maintenanceMode: !sysConfig.maintenanceMode})}
                   className={`px-4 py-1.5 rounded font-mono text-xs font-bold transition ${
-                    sysConfig.maintenanceMode ? 'bg-red-500 text-white' : 'bg-[#0d343c] text-[#7f9ca4]'
+                    sysConfig.maintenanceMode ? 'bg-red-500 text-[#061d21]' : 'bg-[#0d343c] text-[#4a6b72]'
                   }`}
                 >
                   {sysConfig.maintenanceMode ? 'ENABLED' : 'DISABLED'}
@@ -420,14 +420,14 @@ export default function AdminDashboard() {
 
         {/* PROFILE */}
         {activeTab === 'profile' && (
-          <div className="bg-[#04181c] border border-[#0d343c] rounded-xl p-6 max-w-3xl">
-            <div className="flex items-center justify-between pb-6 mb-6 border-b border-[#0d343c]">
+          <div className="bg-white border border-[#d5e5e3] rounded-xl p-6 max-w-3xl">
+            <div className="flex items-center justify-between pb-6 mb-6 border-b border-[#d5e5e3]">
               <div className="flex items-center gap-4">
                 <div className="w-16 h-16 rounded-full bg-red-950/80 border border-red-500 flex items-center justify-center text-2xl font-bold text-red-400">
                   {profile.fullName.charAt(0)}
                 </div>
                 <div>
-                  <h2 className="text-xl font-bold text-white">{profile.fullName}</h2>
+                  <h2 className="text-xl font-bold text-[#061d21]">{profile.fullName}</h2>
                   <p className="text-xs text-red-400 font-mono">{profile.role}</p>
                 </div>
               </div>
@@ -443,12 +443,12 @@ export default function AdminDashboard() {
             {isEditingProfile ? (
               <form onSubmit={(e) => { e.preventDefault(); setIsEditingProfile(false); }} className="space-y-4 text-xs">
                 <div>
-                  <label className="block text-[#7f9ca4] mb-1">Full Name</label>
+                  <label className="block text-[#4a6b72] mb-1">Full Name</label>
                   <input 
                     type="text" 
                     value={profile.fullName} 
                     onChange={(e) => setProfile({...profile, fullName: e.target.value})} 
-                    className="w-full px-4 py-2.5 rounded bg-[#031114] border border-[#0d343c] text-white focus:border-[#00e5ff] outline-none" 
+                    className="w-full px-4 py-2.5 rounded bg-[#f4f8f7] border border-[#d5e5e3] text-[#061d21] focus:border-[#00e5ff] outline-none" 
                   />
                 </div>
                 <button type="submit" className="px-5 py-2.5 bg-[#00e5ff] text-[#031114] font-bold text-xs rounded hover:bg-[#33ebff]">
@@ -458,12 +458,12 @@ export default function AdminDashboard() {
             ) : (
               <div className="space-y-4 text-xs">
                 <div>
-                  <h4 className="font-mono uppercase text-[#7f9ca4] text-[10px]">Email Address</h4>
-                  <p className="text-white font-mono mt-1">{profile.email}</p>
+                  <h4 className="font-mono uppercase text-[#4a6b72] text-[10px]">Email Address</h4>
+                  <p className="text-[#061d21] font-mono mt-1">{profile.email}</p>
                 </div>
                 <div>
-                  <h4 className="font-mono uppercase text-[#7f9ca4] text-[10px]">Institution</h4>
-                  <p className="text-white mt-1">{profile.institution}</p>
+                  <h4 className="font-mono uppercase text-[#4a6b72] text-[10px]">Institution</h4>
+                  <p className="text-[#061d21] mt-1">{profile.institution}</p>
                 </div>
               </div>
             )}
